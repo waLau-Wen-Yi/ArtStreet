@@ -13,5 +13,24 @@ namespace ArtStreet.Home
         {
 
         }
+
+        protected void inp_ddl_ArtCulture_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(inp_ddl_ArtCulture.SelectedIndex)
+            {
+                case 1:
+                    mv_ArtCulture.ActiveViewIndex = 0;
+                    break;
+                case 2:
+                    mv_ArtCulture.ActiveViewIndex = 1;
+                    break;
+                case 3:
+                    mv_ArtCulture.ActiveViewIndex = 2;
+                    break;
+                default:
+                    mv_ArtCulture.ActiveViewIndex = -1;
+                    break;
+            }
+        }
     }
 }
