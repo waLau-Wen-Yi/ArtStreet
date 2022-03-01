@@ -26,9 +26,9 @@
 </head>
 <body>
     <form id="form1" runat="server" style="text-align: center; align-content: center">
-        <asp:Login ID="Login1" runat="server" CreateUserUrl="~/UserControl/Register.aspx" DestinationPageUrl="~/Home.aspx" PasswordRecoveryUrl="~/UserControl/Recovery.aspx" RememberMeSet="True" CssClass="auto-style1">
+        <asp:Login ID="Login1" runat="server" CreateUserUrl="~/UserControl/Register.aspx" DestinationPageUrl="~/Home/Home.aspx" PasswordRecoveryUrl="~/UserControl/Recovery.aspx" RememberMeSet="True" CssClass="auto-style1">
             <LayoutTemplate>
-                <table cellpadding="1" cellspacing="0" style="border-collapse:collapse;">
+                <table cellpadding="1" cellspacing="0" style="border-collapse: collapse;">
                     <tr>
                         <td>
                             <table cellpadding="0" class="auto-style5">
@@ -59,7 +59,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="center" colspan="2" style="color:Red;">
+                                    <td align="center" colspan="2" style="color: Red;">
                                         <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
                                     </td>
                                 </tr>

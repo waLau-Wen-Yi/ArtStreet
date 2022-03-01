@@ -1,14 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="" title="ArtStreet"  description="">
-    <siteMapNode url="" title="Main"  description="">
-      <siteMapNode url="Home.aspx" title="Home"  description="ArtStreet homepage" />
+    <siteMapNode url="Home/Home.aspx" title="Home"  description="ArtStreet homepage">
+      <siteMapNode url="" title="Artworks"  description="ArtStreet artworks page"/>
+      <siteMapNode url="" title="Artists"  description="ArtStreet artists page"/>
+      <siteMapNode url="" title="Art Culture"  description="ArtStreet art culture page"/>
     </siteMapNode>
-    <siteMapNode url="" title="Users"  description="">
-      <siteMapNode url="UserControl/Login.aspx" title="Login"  description="ArtStreet login page" />
-      <siteMapNode url="UserControl/Register.aspx" title="Register"  description="ArtStreet registration page" />
-      <siteMapNode url="UserControl/Recovery.aspx" title="Recover Password"  description="ArtStreet password recover page" />
+    <siteMapNode url="" title="Administration"  description="ArtStreet administration page">
+      <siteMapNode url="" title="Database Control"  description="ArtStreet database control page"/>
+      <siteMapNode url="" title="User Control"  description="ArtStreet user control page"/>
+      <siteMapNode url="" title="Account Moderation"  description="ArtStreet account moderation page"/>
     </siteMapNode>
-    <siteMapNode url="" title="About Us"  description="" />
+    <siteMapNode url="" title="User"  description="ArtStreet user page">
+      <siteMapNode url="" title="Account Settings"  description="ArtStreet account settings page"/>
+      <siteMapNode url="" title="Cart"  description="ArtStreet cart page"/>
+      <siteMapNode url="" title="Payment"  description="ArtStreet payment page"/>
+      <siteMapNode url="" title="Auction"  description="ArtStreet auction page"/>
+    </siteMapNode>
+    <siteMapNode url="AboutUs.aspx" title="About Us"  description="ArtStreet about page" />
   </siteMapNode>
 </siteMap>

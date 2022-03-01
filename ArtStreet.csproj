@@ -72,7 +72,7 @@
     <Content Include="App_Data\ArtDB_log.ldf">
       <DependentUpon>ArtDB.mdf</DependentUpon>
     </Content>
-    <Content Include="Home.aspx" />
+    <Content Include="Home\Home.aspx" />
     <Content Include="UserControl\Login.aspx" />
     <Content Include="UserControl\Recovery.aspx" />
     <Content Include="UserControl\Register.aspx" />
@@ -93,11 +93,11 @@
     <Compile Include="ArtStreet.Master.designer.cs">
       <DependentUpon>ArtStreet.Master</DependentUpon>
     </Compile>
-    <Compile Include="Home.aspx.cs">
+    <Compile Include="Home\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Home.aspx.designer.cs">
+    <Compile Include="Home\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
