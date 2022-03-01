@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="" title="ArtStreet"  description="">
+    <siteMapNode url="" title="Main"  description="">
+      <siteMapNode url="Home.aspx" title="Home"  description="ArtStreet homepage" />
+    </siteMapNode>
+    <siteMapNode url="" title="Users"  description="">
+      <siteMapNode url="UserControl/Login.aspx" title="Login"  description="ArtStreet login page" />
+      <siteMapNode url="UserControl/Register.aspx" title="Register"  description="ArtStreet registration page" />
+      <siteMapNode url="UserControl/Recovery.aspx" title="Recover Password"  description="ArtStreet password recover page" />
+    </siteMapNode>
+    <siteMapNode url="" title="About Us"  description="" />
+  </siteMapNode>
+</siteMap>

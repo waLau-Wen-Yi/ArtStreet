@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ArtStreet.master.cs" Inherits="ArtStreet.ArtStreet" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 200px;
+        }
+        .auto-style2 {
+            width: 701px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <table style="width: 100%;">
+            <tr>
+                <td class="auto-style1" rowspan="3">
+                    <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1">
+                    </asp:TreeView>
+                    <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+                </td>
+                <td class="auto-style2">
+                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                    <br />
+                    <asp:SiteMapPath ID="SiteMapPath2" runat="server">
+                    </asp:SiteMapPath>
+                </td>
+                <td>
+                    <asp:LoginName ID="LoginName1" runat="server" />
+&nbsp;&nbsp;&nbsp;
+                    <asp:LoginStatus ID="LoginStatus1" runat="server" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style2">
+                    <asp:SiteMapPath ID="SiteMapPath1" runat="server">
+                    </asp:SiteMapPath>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
