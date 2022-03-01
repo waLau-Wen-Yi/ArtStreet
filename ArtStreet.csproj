@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AboutUs.aspx" />
     <Content Include="App_Data\ArtDB.mdf" />
     <Content Include="App_Data\ArtDB_log.ldf">
       <DependentUpon>ArtDB.mdf</DependentUpon>
@@ -78,6 +79,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ArtStreet.Master.cs">
       <DependentUpon>ArtStreet.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
