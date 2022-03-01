@@ -72,6 +72,9 @@
     <Content Include="App_Data\ArtDB_log.ldf">
       <DependentUpon>ArtDB.mdf</DependentUpon>
     </Content>
+    <Content Include="Home\ArtCulture.aspx" />
+    <Content Include="Home\Artists.aspx" />
+    <Content Include="Home\Artworks.aspx" />
     <Content Include="Home\Home.aspx" />
     <Content Include="UserControl\Login.aspx" />
     <Content Include="UserControl\Recovery.aspx" />
@@ -92,6 +95,27 @@
     </Compile>
     <Compile Include="ArtStreet.Master.designer.cs">
       <DependentUpon>ArtStreet.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Home\ArtCulture.aspx.cs">
+      <DependentUpon>ArtCulture.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\ArtCulture.aspx.designer.cs">
+      <DependentUpon>ArtCulture.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\Artists.aspx.cs">
+      <DependentUpon>Artists.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\Artists.aspx.designer.cs">
+      <DependentUpon>Artists.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\Artworks.aspx.cs">
+      <DependentUpon>Artworks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\Artworks.aspx.designer.cs">
+      <DependentUpon>Artworks.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
