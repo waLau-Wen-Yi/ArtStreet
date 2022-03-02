@@ -68,10 +68,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
+    <Content Include="AdminControl\addAdminPage.aspx" />
+    <Content Include="AdminControl\RoleManagementPage.aspx" />
     <Content Include="App_Data\ArtDB.mdf" />
     <Content Include="App_Data\ArtDB_log.ldf">
       <DependentUpon>ArtDB.mdf</DependentUpon>
     </Content>
+    <Content Include="CheckoutPage.aspx" />
     <Content Include="Home\ArtCulture.aspx" />
     <Content Include="Home\Artists.aspx" />
     <Content Include="Home\Artworks.aspx" />
@@ -89,12 +92,33 @@
     <Compile Include="AboutUs.aspx.designer.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminControl\addAdminPage.aspx.cs">
+      <DependentUpon>addAdminPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminControl\addAdminPage.aspx.designer.cs">
+      <DependentUpon>addAdminPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminControl\RoleManagementPage.aspx.cs">
+      <DependentUpon>RoleManagementPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminControl\RoleManagementPage.aspx.designer.cs">
+      <DependentUpon>RoleManagementPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ArtStreet.Master.cs">
       <DependentUpon>ArtStreet.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ArtStreet.Master.designer.cs">
       <DependentUpon>ArtStreet.Master</DependentUpon>
+    </Compile>
+    <Compile Include="CheckoutPage.aspx.cs">
+      <DependentUpon>CheckoutPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CheckoutPage.aspx.designer.cs">
+      <DependentUpon>CheckoutPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home\ArtCulture.aspx.cs">
       <DependentUpon>ArtCulture.aspx</DependentUpon>
@@ -149,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ArtStreet.Master" />
+    <Content Include="AdminControl\Web.config" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
