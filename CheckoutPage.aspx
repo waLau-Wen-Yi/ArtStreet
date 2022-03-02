@@ -13,6 +13,7 @@
         }
         .title-label{
             font-size:30px;
+            text-align: center;
         }
 
     </style>
