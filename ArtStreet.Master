@@ -9,47 +9,68 @@
     </asp:ContentPlaceHolder>
     <style type="text/css">
         .auto-style1 {
-            width: 200px;
+            width: 15%;
+            height: 100%;
         }
         .auto-style2 {
-            width: 701px;
+            width: 70%;
+            height: fit-content;
+        }
+        .auto-style3 {
+            width: 70%;
+            height: 20%;
+        }
+        .auto-style4 {
+            width: 10%;
+            height: 20%;
+        }
+        .auto-style5 {
+            width: 70%;
+            height: 503px;
+        }
+        .auto-style6 {
+            width: 10%;
+            height: 503px;
+        }
+        .auto-style7 {
+            width: 10%;
+            height: 10%;
         }
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" style="width: 100%; min-width:fit-content; max-width: 100%">
         <table style="width: 100%;">
             <tr>
-                <td class="auto-style1" rowspan="3">
+                <td class="auto-style1" rowspan="3" style="vertical-align:top;">
                     <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1">
                     </asp:TreeView>
                     <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
                 </td>
-                <td class="auto-style2">
-                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                    <br />
+                <td class="auto-style3">
+                    <h1 style="text-align: left;"><span style="background-color: #000000; color: #ffffff;"><strong>&nbsp;ArtStreet&nbsp;</strong></span></h1>
                     <asp:SiteMapPath ID="SiteMapPath2" runat="server">
                     </asp:SiteMapPath>
                 </td>
-                <td>
+                <td class="auto-style4">
                     <asp:LoginName ID="LoginName1" runat="server" />
 &nbsp;&nbsp;&nbsp;
                     <asp:LoginStatus ID="LoginStatus1" runat="server" />
                 </td>
             </tr>
             <tr>
-                <td class="auto-style2">
+                <td class="auto-style5" style="height: 450px; border: solid 1px gray;">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
                 </td>
-                <td>&nbsp;</td>
+                <td class="auto-style6" style="height: 450px;"></td>
             </tr>
             <tr>
                 <td class="auto-style2">
                     <asp:SiteMapPath ID="SiteMapPath1" runat="server">
                     </asp:SiteMapPath>
                 </td>
-                <td>&nbsp;</td>
+                <td style="height: fit-content;" class="auto-style7"></td>
             </tr>
         </table>
     </form>
