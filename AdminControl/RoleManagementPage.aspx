@@ -21,6 +21,9 @@
             width: 100%;
             height: 72px;
         }
+        .title-container{
+            text-align:center;
+        }
         .title-label{
             font-size:30px;
         }
@@ -104,7 +107,9 @@
 <body class="body">
     <form id="form1" runat="server">
         <div class="auto-style1">
+            <div class="title-container">
             <asp:Label ID="Label1" runat="server" Text="User Management" class="title-label"></asp:Label>
+            </div>
             <br />
             <br />
             <div class="auto-style9">

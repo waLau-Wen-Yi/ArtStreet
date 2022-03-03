@@ -16,21 +16,26 @@
             text-align:center;
         }
         .create{
-
+            vertical-align: middle;
+            margin-left: 35%;
+            margin-top: 15%;
         }
     </style>
 </head>
 <body class="body">
     <form id="form1" runat="server">
         <div class="title-label">
-            Admin Registration
+            <u>Admin Registration</u>
         </div>
-        <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" class="create">
+        <div class="create">
+            <asp:CreateUserWizard ID="CreateUserWizard1" runat="server">
             <WizardSteps>
                 <asp:CreateUserWizardStep runat="server" />
                 <asp:CompleteWizardStep runat="server" />
             </WizardSteps>
         </asp:CreateUserWizard>
+        </div>
+        
      </form>
 </body>
 </html>

@@ -13,16 +13,19 @@
         }
         .title-label{
             font-size:30px;
+            
+        }
+        .title-container{
             text-align: center;
         }
-
     </style>
 </head>
 <body class="body">
     <form id="form1" runat="server">
-        
-        <asp:Label ID="Label1" runat="server" Text="Checkout Page"></asp:Label>
-        
+        <div class="title-container">
+            <u><asp:Label ID="Label1" runat="server" Text="Checkout Page" class="title-label"></asp:Label></u>
+        </div>
+
     </form>
 </body>
 </html>
