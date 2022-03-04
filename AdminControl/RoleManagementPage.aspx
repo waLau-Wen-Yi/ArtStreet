@@ -64,17 +64,10 @@
             text-align: left;
             width: 654px;
         }
-        .ddl-filter{
+        .ddl-filter {
             padding: 5px 30px;
             width: 120px;
-        }
-        .lbl-page-container{
-            text-align: right;
-        }
-        .lbl-page{
-            margin-right:10px;
-        }
-        
+        }        
         .auto-style5 {
             height: 63px;
         }
@@ -101,7 +94,16 @@
             border-style:Solid;
             border-width:1px;
         }
-        
+        .footer{    
+            vertical-align:top;
+        }
+        .lbl-page{
+            margin-left: 77%;
+        }
+        .auto-style10 {
+            vertical-align: top;
+            margin-top: 6px;
+        }
     </style>
 </head>
 <body class="body">
@@ -128,13 +130,15 @@
             <table class="auto-style2">
                 <tr>
                     <td class="auto-style5">
-            <asp:DropDownList ID="ddlFilterUser" runat="server" class="ddl-filter" AutoPostBack="True" Width="160px">
+            <asp:DropDownList ID="ddlFilterUser" runat="server" class="ddl-filter" AutoPostBack="True" Width="160px" Enabled="False">
             </asp:DropDownList>
-                        &nbsp;<asp:Button ID="ddlApplyBtn" runat="server" CssClass="search-btn" Text="Apply" Height="29px" Width="69px" />
-                    </td>
+                        &nbsp;</td>
                     <td class="auto-style6">
-                        <asp:Label ID="lblPage" runat="server" Text="[lblPage]" class="lbl-page"></asp:Label>
-                    &nbsp;</td>
+                       
+                    <asp:Button ID="assignRole" runat="server" BackColor="Red" Height="38px" Text="Assign Role" Width="133px" EnableViewState="False" BorderColor="White" ForeColor="White" />
+                       
+                    <asp:Button ID="deleteBtn" runat="server" BackColor="Red" Height="38px" Text="Delete" Width="133px" EnableViewState="False" BorderColor="White" ForeColor="White" />
+                    </td>
                 </tr>
                 </table>
             <asp:GridView ID="userGrid" runat="server" class="role-display"  CellPadding="4" ForeColor="Black" GridLines="Horizontal" Width="1002px" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="custID" Height="147px" DataSourceID="SqlDataSource1">
@@ -172,13 +176,6 @@
                     <asp:BoundField DataField="username" HeaderText="username" SortExpression="username" >
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" />
                     </asp:BoundField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Button ID="dltBtn" runat="server" Text="Delete" BackColor="Red" BorderStyle="None" ForeColor="White" />
-                        </ItemTemplate>
-                        <ControlStyle Height="40px" Width="80px" />
-                        <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" Width="85px" />
-                    </asp:TemplateField>
                 </Columns>
                 
                 <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
@@ -211,9 +208,20 @@
                         <asp:Parameter Name="custID" Type="String" />
                     </UpdateParameters>
                 </asp:SqlDataSource>
-                <asp:Button ID="ApplyGrid" runat="server" BackColor="#66FF99" Height="38px" Text="Apply Changes" Width="133px" />
-                <br />
-                <br />
+                <div class="auto-style10">
+                    
+                        <asp:Button ID="ApplyGridBtn" runat="server" BackColor="#66FF99" Height="38px" Text="Apply Changes" Width="133px" />
+                    
+                    
+                        <asp:MultiView ID="MultiView1" runat="server">
+                            <asp:View ID="View1" runat="server">
+                            </asp:View>
+                        </asp:MultiView>
+                    
+                    
+                        <asp:Label ID="lblPage" runat="server" Text="[lblPage]" class="lbl-page"></asp:Label>
+                    
+                </div>
         </div>
             </div>
     </form>

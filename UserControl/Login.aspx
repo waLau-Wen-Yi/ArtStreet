@@ -18,13 +18,17 @@
         }
         .auto-style4 {
             width: 251px;
+            height: 30px;
         }
         .auto-style5 {
             width: 464px;
         }
+        .auto-style6 {
+            height: 30px;
+        }
     </style>
 </head>
-<body>
+<body style="width: 1459px; height: 470px">
     <form id="form1" runat="server" style="text-align: center; align-content: center">
         <asp:Login ID="Login1" runat="server" CreateUserUrl="~/UserControl/Register.aspx" DestinationPageUrl="~/Home/Home.aspx" PasswordRecoveryUrl="~/UserControl/Recovery.aspx" RememberMeSet="True" CssClass="auto-style1" BackColor="#FFFBD6" BorderColor="#FFDFAD" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#333333" TextLayout="TextOnTop">
             <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
@@ -46,7 +50,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="right">
+                                    <td align="right" class="auto-style6">
                                         <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
                                     </td>
                                     <td class="auto-style4">
@@ -81,6 +85,10 @@
             <TextBoxStyle Font-Size="0.8em" />
             <TitleTextStyle BackColor="#990000" Font-Bold="True" Font-Size="0.9em" ForeColor="White" />
         </asp:Login>
+        <br />
+        <br />
+        <br />
+      
     </form>
 </body>
 </html>
