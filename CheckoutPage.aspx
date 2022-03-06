@@ -33,12 +33,28 @@
             width: 195px;
             float:right;
         }
-        .radio-btn1{
-            float: right;
-            width: 10px;
+        .datalist-container{
+            vertical-align: top;
         }
-        input["Text"] .radio-btn1{
+        .datalist{
+            margin-left: 25%;
+        }
+        .auto-style6 {
+            height: 26px;
+        }
+        .auto-style7 {
+            width: 100%;
+            height: 163px;
             
+        }
+        .auto-style8 {
+            height: 53px;
+            text-align: right;
+            padding-right: 40px;
+        }
+        .total-item{
+            text-align: right;
+            padding-right: 40px;
         }
     </style>
 </head>
@@ -57,8 +73,24 @@
                 </td>
                 <td class="auto-style2">
                     <input id="Text1" type="text" /></td>
-                <td rowspan="4">
-                    <asp:DataList ID="DataList1" runat="server">
+                <td rowspan="4" class="datalist-container">
+                    <asp:DataList ID="DataList1" runat="server" class="datalist">
+                        <ItemTemplate>
+                            <table style="width:100%;border-bottom:1px solid grey">
+                                <tr>
+                                    <td rowspan="3">
+                                        <img alt="" src="<%# Eval("artURL") %>" />
+                                    </td>
+                                    <td class="auto-style6">Name of product:<%# Eval("productName") %></td>
+                                </tr>
+                                <tr>
+                                    <td>Quantity:<%# Eval("quantity") %></td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style6">Current price:<%# Eval("currentPrice") %></td>
+                                </tr>
+                            </table>
+                        </ItemTemplate>
                     </asp:DataList>
                 </td>
             </tr>
@@ -82,6 +114,24 @@
                 </td>
                 <td class="auto-style2">
                     &nbsp;</td>
+            </tr>
+        </table>
+
+        <table class="auto-style7">
+            <tr>
+                <td class="auto-style8">
+                    <asp:Label ID="lblCharge" runat="server"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td class="total-item">
+                    <asp:Label ID="lblTotal" runat="server"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td class="total-item">
+                    <asp:Button ID="chkoutBtn" runat="server" BackColor="Lime" Font-Size="Medium" Height="41px" Text="Checkout" Width="150px" />
+                </td>
             </tr>
         </table>
 

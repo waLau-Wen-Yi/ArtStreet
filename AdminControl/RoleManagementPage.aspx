@@ -48,7 +48,10 @@
         .add-user-btn{
             padding:5px 20px;
         }
-
+        .add-roles{
+            vertical-align: top;
+            padding-top:0;
+        }
         .search{
             height:25px;
         }
@@ -63,6 +66,7 @@
         .auto-style4 {
             text-align: left;
             width: 654px;
+            height: 66px;
         }
         .ddl-filter {
             padding: 5px 30px;
@@ -104,9 +108,13 @@
             vertical-align: top;
             margin-top: 6px;
         }
+        .auto-style11 {
+            text-align: right;
+            height: 66px;
+        }
     </style>
 </head>
-<body class="body">
+<body class="body" style="height: 771px">
     <form id="form1" runat="server">
         <div class="auto-style1">
             <div class="title-container">
@@ -118,64 +126,107 @@
             <table class="auto-style3">
                 <tr>
                     <td class="auto-style4">&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="addAdminBtn" runat="server" class="add-user-btn" Text="+ Add New Admin" Height="43px" Width="176px" BackColor="#66FF99" />
+                        &nbsp;<asp:Button ID="addRolesBtn" runat="server" class="add-user-btn" Text="+ Add New Roles" Height="43px" Width="176px" BackColor="Blue" OnClick="addRolesBtn_Click" ForeColor="White" />
                         </td>   
-                    <td class="search-container">
-                        <input id="searchTxtBox" type="text" placeholder="Search" class="auto-style7"/>
-                        <asp:Button ID="searchBtn" runat="server" Text="Search" class="search-btn" />
+                    <td class="auto-style11">
+                        <asp:TextBox ID="txtSearch" runat="server" CssClass="auto-style7" Placeholder="Search username" OnTextChanged="txtSearch_TextChanged"></asp:TextBox>
+&nbsp;<asp:Button ID="searchBtn" runat="server" Text="Search" class="search-btn" OnClick="searchBtn_Click" />
                     </td>   
                 </tr>
             </table>
-            &nbsp;<br />
+                    <asp:Panel ID="Panel1" runat="server">
+                        <asp:Label ID="lblRoles" runat="server" Text="Roles:" style="vertical-align:top;"></asp:Label>
+                        &nbsp;<asp:TextBox ID="txtRoles" runat="server"></asp:TextBox>
+&nbsp;<asp:Button ID="roleSubmitBtn" runat="server" Text="Add Role" OnClick="roleSubmitBtn_Click" BackColor="Blue" ForeColor="White" />
+                    </asp:Panel>
+                <br />
             <table class="auto-style2">
                 <tr>
                     <td class="auto-style5">
-            <asp:DropDownList ID="ddlFilterUser" runat="server" class="ddl-filter" AutoPostBack="True" Width="160px" Enabled="False">
+                        <asp:Label ID="lblFilter" runat="server" Text="Filter:" style="vertical-align: middle;"></asp:Label>
+&nbsp;<asp:DropDownList ID="ddlFilterUser" runat="server" class="ddl-filter" AutoPostBack="True" Width="160px" Enabled="False" OnSelectedIndexChanged="ddlFilterUser_SelectedIndexChanged">
+                            <asp:ListItem></asp:ListItem>
+                            <asp:ListItem></asp:ListItem>
             </asp:DropDownList>
                         &nbsp;</td>
                     <td class="auto-style6">
                        
-                    <asp:Button ID="assignRole" runat="server" BackColor="Red" Height="38px" Text="Assign Role" Width="133px" EnableViewState="False" BorderColor="White" ForeColor="White" />
+                    <asp:Button ID="assignRole" runat="server" BackColor="#3333FF" Height="38px" Text="Assign Role" Width="133px" EnableViewState="False" BorderColor="White" ForeColor="White" OnClick="assignRole_Click" />
                        
-                    <asp:Button ID="deleteBtn" runat="server" BackColor="Red" Height="38px" Text="Delete" Width="133px" EnableViewState="False" BorderColor="White" ForeColor="White" />
                     </td>
                 </tr>
                 </table>
-            <asp:GridView ID="userGrid" runat="server" class="role-display"  CellPadding="4" ForeColor="Black" GridLines="Horizontal" Width="1002px" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="custID" Height="147px" DataSourceID="SqlDataSource1">
+            <asp:GridView ID="userGrid" runat="server" class="role-display"  CellPadding="4" ForeColor="Black" GridLines="Horizontal" Width="1002px" AllowSorting="True" AutoGenerateColumns="False" Height="147px" OnRowDataBound="userGrid_RowDataBound" OnSelectedIndexChanged="userGrid_SelectedIndexChanged" OnRowDeleting="userGrid_RowDeleting" OnRowEditing="userGrid_RowEditing">
                 
                 <Columns>
-                    <asp:TemplateField>
+                    <asp:CommandField ShowEditButton="True" />
+                    <asp:TemplateField Visible = "False">
                         <HeaderTemplate>
-                            <asp:CheckBox ID="chkHeader" runat="server" />
+                            <asp:CheckBox ID = "chkHeader" runat="server" OnCheckedChanged="chkHeader_CheckedChanged"/>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <asp:CheckBox ID="chkAccAll" runat="server" />
+                            <asp:CheckBox ID = "chkAccAll" runat="server"  />
                         </ItemTemplate>
-                        <ControlStyle BorderStyle="None" />
+                        <ControlStyle BorderStyle = "None" />
                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" />
                     </asp:TemplateField>
-                    <asp:BoundField DataField="custID" HeaderText="custID" SortExpression="custID" ReadOnly="True" >
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" />
-                    </asp:BoundField>
-                    <asp:BoundField DataField="custName" HeaderText="custName" SortExpression="custName" >
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" />
-                    </asp:BoundField>
+
                     <asp:TemplateField>
                         <HeaderTemplate>
-                            <asp:Label ID="lblRoles" runat="server" Text="Roles"></asp:Label>
+                            <asp:Label ID = "lblCustID" runat="server" Text="CustID"></asp:Label>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <asp:DropDownList ID="ddlRoles" runat="server" Width="152px">
+                            <div><%# Eval("custID") %></div>
+                        </ItemTemplate>
+                        <ItemStyle HorizontalAlign = "Center" VerticalAlign="Middle" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" />
+                    </asp:TemplateField>
+
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label ID = "lblusername" runat="server" Text="Username"></asp:Label>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <div id="username"><%# Eval("Username") %></div>
+                        </ItemTemplate>
+                        <ItemStyle HorizontalAlign = "Center" VerticalAlign="Middle" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" />
+                    </asp:TemplateField>
+
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label ID = "lblCustName" runat="server" Text="Customer Name"></asp:Label>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <div><%# Eval("custName") %></div>
+                        </ItemTemplate>
+                        <ItemStyle HorizontalAlign = "Center" VerticalAlign="Middle" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" />
+                    </asp:TemplateField>
+                        
+                    <asp:TemplateField>
+                         <EditItemTemplate>
+                            <asp:DropDownList ID ="ddlRoles" runat="server" AutoPostBack="True" Width="152px" OnSelectedIndexChanged="ddlRoles_SelectedIndexChanged1">
                             </asp:DropDownList>
-                        </ItemTemplate>
-                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" />
+                        </EditItemTemplate>
+                        <HeaderTemplate>
+                            <asp:Label ID = "lblRoles" runat="server" Text="Roles"></asp:Label>
+                        </HeaderTemplate>
+                         <ItemTemplate>
+                             <div><%# Eval("RoleName") %></div>
+                         </ItemTemplate>
+                        <ItemStyle HorizontalAlign = "Center" VerticalAlign="Middle" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" />
                     </asp:TemplateField>
-                    <asp:BoundField DataField="custEmail" HeaderText="custEmail" SortExpression="custEmail" >
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" />
-                    </asp:BoundField>
-                    <asp:BoundField DataField="username" HeaderText="username" SortExpression="username" >
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" />
-                    </asp:BoundField>
+
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label ID = "lblCustEmail" runat="server" Text="Customer Email"></asp:Label>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <div><%# Eval("email") %></div>
+                        </ItemTemplate>
+                        <ItemStyle HorizontalAlign = "Center" VerticalAlign="Middle" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" />
+                    </asp:TemplateField>
+                    
+                    <asp:CommandField ShowDeleteButton="True" />
+                    
                 </Columns>
                 
                 <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
@@ -187,39 +238,12 @@
                 <SortedDescendingCellStyle BackColor="#E5E5E5" />
                 <SortedDescendingHeaderStyle BackColor="#242121" />
             </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>" 
-                    DeleteCommand="DELETE FROM [tb_Customer] WHERE [custID] = @custID" 
-                    InsertCommand="INSERT INTO [tb_Customer] ([custID], [custName], [custEmail], [username]) VALUES (@custID, @custName, @custEmail, @username)" 
-                    SelectCommand="SELECT [custID], [custName], [custEmail], [username] FROM [tb_Customer]" 
-                    UpdateCommand="UPDATE [tb_Customer] SET [custName] = @custName, [custEmail] = @custEmail, [username] = @username WHERE [custID] = @custID">
-                    <DeleteParameters>
-                        <asp:Parameter Name="custID" Type="String" />
-                    </DeleteParameters>
-                    <InsertParameters>
-                        <asp:Parameter Name="custID" Type="String" />
-                        <asp:Parameter Name="custName" Type="String" />
-                        <asp:Parameter Name="custEmail" Type="String" />
-                        <asp:Parameter Name="username" Type="String" />
-                    </InsertParameters>
-                    <UpdateParameters>
-                        <asp:Parameter Name="custName" Type="String" />
-                        <asp:Parameter Name="custEmail" Type="String" />
-                        <asp:Parameter Name="username" Type="String" />
-                        <asp:Parameter Name="custID" Type="String" />
-                    </UpdateParameters>
-                </asp:SqlDataSource>
                 <div class="auto-style10">
                     
-                        <asp:Button ID="ApplyGridBtn" runat="server" BackColor="#66FF99" Height="38px" Text="Apply Changes" Width="133px" />
+                        <br />
                     
+                        <asp:Button ID="ApplyGridBtn" runat="server" BackColor="#66FF99" Height="38px" Text="Apply Changes" Width="133px" OnClick="ApplyGridBtn_Click" />
                     
-                        <asp:MultiView ID="MultiView1" runat="server">
-                            <asp:View ID="View1" runat="server">
-                            </asp:View>
-                        </asp:MultiView>
-                    
-                    
-                        <asp:Label ID="lblPage" runat="server" Text="[lblPage]" class="lbl-page"></asp:Label>
                     
                 </div>
         </div>
