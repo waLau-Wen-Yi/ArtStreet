@@ -33,13 +33,22 @@ namespace ArtStreet.com.AdminControl
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// addAdminBtn control.
+        /// addRolesBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addAdminBtn;
+        protected global::System.Web.UI.WebControls.Button addRolesBtn;
+
+        /// <summary>
+        /// txtSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSearch;
 
         /// <summary>
         /// searchBtn control.
@@ -51,6 +60,51 @@ namespace ArtStreet.com.AdminControl
         protected global::System.Web.UI.WebControls.Button searchBtn;
 
         /// <summary>
+        /// Panel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
+
+        /// <summary>
+        /// lblRoles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRoles;
+
+        /// <summary>
+        /// txtRoles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRoles;
+
+        /// <summary>
+        /// roleSubmitBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button roleSubmitBtn;
+
+        /// <summary>
+        /// lblFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFilter;
+
+        /// <summary>
         /// ddlFilterUser control.
         /// </summary>
         /// <remarks>
@@ -60,22 +114,13 @@ namespace ArtStreet.com.AdminControl
         protected global::System.Web.UI.WebControls.DropDownList ddlFilterUser;
 
         /// <summary>
-        /// ddlApplyBtn control.
+        /// assignRole control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ddlApplyBtn;
-
-        /// <summary>
-        /// lblPage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPage;
+        protected global::System.Web.UI.WebControls.Button assignRole;
 
         /// <summary>
         /// userGrid control.
@@ -87,21 +132,12 @@ namespace ArtStreet.com.AdminControl
         protected global::System.Web.UI.WebControls.GridView userGrid;
 
         /// <summary>
-        /// SqlDataSource1 control.
+        /// ApplyGridBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
-
-        /// <summary>
-        /// ApplyGrid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ApplyGrid;
+        protected global::System.Web.UI.WebControls.Button ApplyGridBtn;
     }
 }

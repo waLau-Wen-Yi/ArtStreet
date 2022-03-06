@@ -68,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
-    <Content Include="AdminControl\addAdminPage.aspx" />
     <Content Include="AdminControl\RoleManagementPage.aspx" />
     <Content Include="App_Data\ArtDB.mdf" />
     <Content Include="App_Data\ArtDB_log.ldf">
@@ -91,13 +90,6 @@
     </Compile>
     <Compile Include="AboutUs.aspx.designer.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AdminControl\addAdminPage.aspx.cs">
-      <DependentUpon>addAdminPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdminControl\addAdminPage.aspx.designer.cs">
-      <DependentUpon>addAdminPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminControl\RoleManagementPage.aspx.cs">
       <DependentUpon>RoleManagementPage.aspx</DependentUpon>
