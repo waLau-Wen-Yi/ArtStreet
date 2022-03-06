@@ -5,7 +5,7 @@
     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
         <ItemTemplate>
             <div style="border: solid 1px black">
-                <img alt="" src="<%# Eval("artistPicture") %>" style="float: left; width: 70px;"/>
+                <img alt="" src="<%# Eval("artistURL") %>" style="float: left; width: 70px;"/>
                 ID: 
                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("artistID") %>' />
                 <br />
@@ -16,7 +16,7 @@
                 <asp:Label ID="Label3" runat="server" Text='<%# Eval("artistPhoneNo") %>' />
                 <br />
                 Email: 
-                <asp:Label ID="Label4" runat="server" Text='<%# Eval("artistEmail") %>' />
+                <asp:Label ID="Label4" runat="server" Text='' />
             </div>
         </ItemTemplate>
     </asp:Repeater>

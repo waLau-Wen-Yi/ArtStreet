@@ -43,7 +43,7 @@
         <table style="width: 100%;">
             <tr>
                 <td class="auto-style1" rowspan="3" style="vertical-align:top;">
-                    <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1" ExpandImageUrl="https://static01.nyt.com/images/2017/08/29/arts/30DRIVEEASTNOTE1/30DRIVEEASTNOTE1-superJumbo.jpg" Visible="False">
+                    <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1" ExpandImageUrl="https://static01.nyt.com/images/2017/08/29/arts/30DRIVEEASTNOTE1/30DRIVEEASTNOTE1-superJumbo.jpg" ShowLines="True">
                     </asp:TreeView>
                     <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
                 </td>
@@ -67,9 +67,7 @@
             </tr>
             <tr>
                 <td class="auto-style2">
-                    <asp:SiteMapPath ID="SiteMapPath1" runat="server">
-                    </asp:SiteMapPath>
-                </td>
+                    &nbsp;</td>
                 <td style="height: fit-content;" class="auto-style7"></td>
             </tr>
         </table>

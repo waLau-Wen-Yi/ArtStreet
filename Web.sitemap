@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="" title="ArtStreet"  description="">
-    <siteMapNode url="Home/Home.aspx" title="Home"  description="ArtStreet homepage">
-      <siteMapNode url="" title="Artworks"  description="ArtStreet artworks page"/>
-      <siteMapNode url="" title="Artists"  description="ArtStreet artists page"/>
+    <siteMapNode url="" title="Home"  description="ArtStreet homepage">
+      <siteMapNode url="Home/Artworks.aspx" title="Artworks"  description="ArtStreet artworks page"/>
+      <siteMapNode url="Home/Artists.aspx" title="Artists"  description="ArtStreet artists page"/>
       <siteMapNode url="Home/ArtCulture.aspx" title="Art Culture"  description="ArtStreet art culture page"/>
     </siteMapNode>
     <siteMapNode url="" title="Administration"  description="ArtStreet administration page">

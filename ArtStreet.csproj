@@ -77,7 +77,6 @@
     <Content Include="Home\ArtCulture.aspx" />
     <Content Include="Home\Artists.aspx" />
     <Content Include="Home\Artworks.aspx" />
-    <Content Include="Home\Home.aspx" />
     <Content Include="UserControl\Login.aspx" />
     <Content Include="UserControl\Recovery.aspx" />
     <Content Include="UserControl\Register.aspx" />
@@ -132,13 +131,6 @@
     </Compile>
     <Compile Include="Home\Artworks.aspx.designer.cs">
       <DependentUpon>Artworks.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Home\Home.aspx.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Home\Home.aspx.designer.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControl\Login.aspx.cs">
