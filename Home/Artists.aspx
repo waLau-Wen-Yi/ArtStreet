@@ -4,8 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
         <ItemTemplate>
-            <div style="border: solid 1px black">
-                <img alt="" src="<%# Eval("artistURL") %>" style="float: left; width: 70px;"/>
+            <div style="border: solid 1px black; width: 95%; margin: 5px; padding: 5px;">
+                <img alt="" src="<%# Eval("artistURL") %>" style="float: left; width: 70px; padding-right: 10px;"/>
                 ID: 
                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("artistID") %>' />
                 <br />
