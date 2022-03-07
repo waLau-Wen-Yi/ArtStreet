@@ -3,13 +3,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="align-content: center; vertical-align: top;">
-        <asp:DropDownList ID="inp_ddl_ArtCulture" runat="server" AutoPostBack="True" OnSelectedIndexChanged="inp_ddl_ArtCulture_SelectedIndexChanged" Width="100%">
-            <asp:ListItem Value=" "></asp:ListItem>
-            <asp:ListItem Value="Indian"></asp:ListItem>
-            <asp:ListItem Value="Chinese"></asp:ListItem>
-            <asp:ListItem Value="Malay"></asp:ListItem>
-        </asp:DropDownList>
-        <div style="overflow-y: scroll; height: 525px;">
+        <div style="border: solid 1px black; padding: 10px;">
+            Showing genre introduction:
+            <br />
+            <asp:DropDownList ID="inp_ddl_ArtCulture" runat="server" AutoPostBack="True" OnSelectedIndexChanged="inp_ddl_ArtCulture_SelectedIndexChanged" Width="100%">
+                <asp:ListItem Value=" "></asp:ListItem>
+                <asp:ListItem Value="Indian"></asp:ListItem>
+                <asp:ListItem Value="Chinese"></asp:ListItem>
+                <asp:ListItem Value="Malay"></asp:ListItem>
+            </asp:DropDownList>
+        </div>
+        <div style="overflow-y: scroll; height: 500px; padding: 5px;">
             <asp:MultiView ID="mv_ArtCulture" runat="server">
                 <asp:View ID="vw_Indian" runat="server">
                     <h1 id="firstHeading" class="firstHeading mw-first-heading" style="color: rgb(0, 0, 0); margin: 0px 0px 0.25em; padding: 0px; overflow: visible; border-bottom: 1px solid rgb(162, 169, 177); font-size: 1.8em; font-weight: normal; font-family: &quot;Linux Libertine&quot;, Georgia, Times, serif; line-height: 1.3; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">Indian art</h1>
