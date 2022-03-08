@@ -12,7 +12,6 @@ namespace ArtStreet.UserControl
 {
     public partial class Register : System.Web.UI.Page
     {
-        int id = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -22,7 +21,13 @@ namespace ArtStreet.UserControl
         {
 
             DateTime time = DateTime.Now;
-            id = id + 1;
+            SqlConnection conn;
+            string strConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            conn = new SqlConnection(strConn);
+            conn.Open();
+            string queryCount = "SELECT COUNT(*) FROM tb_Customer";
+            SqlCommand cmdCount = new SqlCommand(queryCount, conn);
+            int id = (int)cmdCount.ExecuteScalar()+1;
 
             SqlConnection con;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;

@@ -129,8 +129,8 @@
                         &nbsp;<asp:Button ID="addRolesBtn" runat="server" class="add-user-btn" Text="+ Add New Roles" Height="43px" Width="176px" BackColor="Blue" OnClick="addRolesBtn_Click" ForeColor="White" />
                         </td>   
                     <td class="auto-style11">
-                        <asp:TextBox ID="txtSearch" runat="server" CssClass="auto-style7" Placeholder="Search username" OnTextChanged="txtSearch_TextChanged"></asp:TextBox>
-&nbsp;<asp:Button ID="searchBtn" runat="server" Text="Search" class="search-btn" OnClick="searchBtn_Click" />
+                        <asp:TextBox ID="txtSearch" runat="server" CssClass="auto-style7" Placeholder="Search username" OnTextChanged="txtSearch_TextChanged" Visible="False"></asp:TextBox>
+&nbsp;<asp:Button ID="searchBtn" runat="server" Text="Search" class="search-btn" OnClick="searchBtn_Click" Visible="False" />
                     </td>   
                 </tr>
             </table>
@@ -144,19 +144,15 @@
                 <tr>
                     <td class="auto-style5">
                         <asp:Label ID="lblFilter" runat="server" Text="Filter:" style="vertical-align: middle;"></asp:Label>
-&nbsp;<asp:DropDownList ID="ddlFilterUser" runat="server" class="ddl-filter" AutoPostBack="True" Width="160px" Enabled="False" OnSelectedIndexChanged="ddlFilterUser_SelectedIndexChanged">
-                            <asp:ListItem></asp:ListItem>
-                            <asp:ListItem></asp:ListItem>
+&nbsp;<asp:DropDownList ID="ddlFilterUser" runat="server" class="ddl-filter" AutoPostBack="True" Width="160px" OnSelectedIndexChanged="ddlFilterUser_SelectedIndexChanged">
             </asp:DropDownList>
                         &nbsp;</td>
                     <td class="auto-style6">
                        
-                    <asp:Button ID="assignRole" runat="server" BackColor="#3333FF" Height="38px" Text="Assign Role" Width="133px" EnableViewState="False" BorderColor="White" ForeColor="White" OnClick="assignRole_Click" />
-                       
-                    </td>
+                        &nbsp;</td>
                 </tr>
                 </table>
-            <asp:GridView ID="userGrid" runat="server" class="role-display"  CellPadding="4" ForeColor="Black" GridLines="Horizontal" Width="1002px" AllowSorting="True" AutoGenerateColumns="False" Height="147px" OnRowDataBound="userGrid_RowDataBound" OnSelectedIndexChanged="userGrid_SelectedIndexChanged" OnRowDeleting="userGrid_RowDeleting" OnRowEditing="userGrid_RowEditing">
+            <asp:GridView ID="userGrid" runat="server" class="role-display"  CellPadding="4" ForeColor="Black" GridLines="Horizontal" Width="1002px" AllowSorting="True" AutoGenerateColumns="False" Height="147px" OnRowDataBound="userGrid_RowDataBound" OnRowDeleting="userGrid_RowDeleting" OnRowEditing="userGrid_RowEditing" OnRowUpdating="userGrid_RowUpdating" OnRowCancelingEdit="userGrid_RowCancelingEdit" OnSelectedIndexChanged="userGrid_SelectedIndexChanged">
                 
                 <Columns>
                     <asp:CommandField ShowEditButton="True" />
@@ -242,7 +238,8 @@
                     
                         <br />
                     
-                        <asp:Button ID="ApplyGridBtn" runat="server" BackColor="#66FF99" Height="38px" Text="Apply Changes" Width="133px" OnClick="ApplyGridBtn_Click" />
+                    
+                        <br />
                     
                     
                 </div>

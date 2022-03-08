@@ -114,15 +114,6 @@ namespace ArtStreet.com.AdminControl
         protected global::System.Web.UI.WebControls.DropDownList ddlFilterUser;
 
         /// <summary>
-        /// assignRole control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button assignRole;
-
-        /// <summary>
         /// userGrid control.
         /// </summary>
         /// <remarks>
@@ -130,14 +121,5 @@ namespace ArtStreet.com.AdminControl
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView userGrid;
-
-        /// <summary>
-        /// ApplyGridBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ApplyGridBtn;
     }
 }
