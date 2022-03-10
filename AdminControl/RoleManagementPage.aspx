@@ -1,17 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RoleManagementPage.aspx.cs" Inherits="ArtStreet.com.AdminControl.RoleManagementPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/ArtStreet.Master" AutoEventWireup="true" CodeBehind="RoleManagementPage.aspx.cs" Inherits="ArtStreet.com.AdminControl.RoleManagementPage" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div style="overflow-y: scroll; height: 669px; width: 80%; margin: 30px auto;">
+   
     <style type="text/css">
-        .body{
-            width: 75%;
-            margin: 30px auto;
-            height:669px;
-        }
         .auto-style1 {
             width: 1003px;
             height: 510px;
@@ -113,9 +105,7 @@
             height: 66px;
         }
     </style>
-</head>
-<body class="body" style="height: 771px">
-    <form id="form1" runat="server">
+
         <div class="auto-style1">
             <div class="title-container">
             <asp:Label ID="Label1" runat="server" Text="User Management" class="title-label"></asp:Label>
@@ -245,6 +235,6 @@
                 </div>
         </div>
             </div>
-    </form>
-</body>
-</html>
+
+        </div>
+</asp:Content>

@@ -73,6 +73,7 @@
     <Content Include="App_Data\ArtDB_log.ldf">
       <DependentUpon>ArtDB.mdf</DependentUpon>
     </Content>
+    <Content Include="ArtistControl\UploadArt.aspx" />
     <Content Include="CheckoutPage.aspx" />
     <Content Include="Home\ArtCulture.aspx" />
     <Content Include="Home\Artists.aspx" />
@@ -96,6 +97,13 @@
     </Compile>
     <Compile Include="AdminControl\RoleManagementPage.aspx.designer.cs">
       <DependentUpon>RoleManagementPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ArtistControl\UploadArt.aspx.cs">
+      <DependentUpon>UploadArt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ArtistControl\UploadArt.aspx.designer.cs">
+      <DependentUpon>UploadArt.aspx</DependentUpon>
     </Compile>
     <Compile Include="ArtStreet.Master.cs">
       <DependentUpon>ArtStreet.Master</DependentUpon>

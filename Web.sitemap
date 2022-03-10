@@ -9,7 +9,7 @@
     <siteMapNode url="" title="Administration"  description="ArtStreet administration page">
       <siteMapNode url="" title="Database Control"  description="ArtStreet database control page"/>
       <siteMapNode url="" title="User Control"  description="ArtStreet user control page"/>
-      <siteMapNode url="" title="Account Moderation"  description="ArtStreet account moderation page"/>
+      <siteMapNode url="AdminControl/RoleManagementPage.aspx" title="Account Moderation"  description="ArtStreet account moderation page"/>
     </siteMapNode>
     <siteMapNode url="" title="User"  description="ArtStreet user page">
       <siteMapNode url="" title="Account Settings"  description="ArtStreet account settings page"/>

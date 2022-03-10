@@ -27,7 +27,7 @@ namespace ArtStreet.com.AdminControl
                 ddlFilterUser.Items.Insert(0, new ListItem("All", "0"));
                 ddlFilterUser.SelectedIndex = 0;
                 this.Session["filterRole"] = ddlFilterUser.SelectedValue.ToString();
-                gv_dataBind();
+                //gv_dataBind();
             }
             //Add new roles part
             Panel1.Visible = false;
@@ -50,13 +50,13 @@ namespace ArtStreet.com.AdminControl
 
             if ((string)this.Session["filterRole"] == null || (string)this.Session["filterRole"] == "0")
             {
-               query = "SELECT DISTINCT cust.custID, u.Username, cust.custName, RoleName, cust.email FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId";
+               query = "SELECT DISTINCT cust.custID, u.Username, cust.custName, RoleName, cust.email FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId AND u.UserId = ur.UserId";
                SqlCommand cmdAssign = new SqlCommand(query, con);
                custList = cmdAssign.ExecuteReader();
             }
             else
             {
-                query = "SELECT DISTINCT cust.custID, u.Username, cust.custName, RoleName, cust.email FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId AND RoleName = @roleName";
+                query = "SELECT DISTINCT cust.custID, u.Username, cust.custName, RoleName, cust.email FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId AND u.UserId = ur.UserId AND RoleName = @roleName";
                 SqlCommand cmdAssign = new SqlCommand(query, con);
                 cmdAssign.Parameters.AddWithValue("@roleName",(string)this.Session["filterRole"]);
                 custList = cmdAssign.ExecuteReader();
@@ -144,7 +144,7 @@ namespace ArtStreet.com.AdminControl
             string strCon3 = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con3 = new SqlConnection(strCon3);
             con3.Open();
-            string queryCustID = "SELECT DISTINCT cust.custID FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId";
+            string queryCustID = "SELECT DISTINCT cust.custID FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId AND ur.UserId = u.UserId";
             SqlCommand cmdAssign3 = new SqlCommand(queryCustID, con3);
             SqlDataReader readerCust = cmdAssign3.ExecuteReader();
             if (readerCust.HasRows)
@@ -167,7 +167,7 @@ namespace ArtStreet.com.AdminControl
             string strCon2 = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con2 = new SqlConnection(strCon2);
             con2.Open();
-            string queryRole = "SELECT DISTINCT RoleName FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId";
+            string queryRole = "SELECT RoleName FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId AND ur.UserId = u.UserId";
             SqlCommand cmdAssign2 = new SqlCommand(queryRole, con2);
             SqlDataReader reader = cmdAssign2.ExecuteReader();
             if (reader.HasRows)
@@ -190,7 +190,7 @@ namespace ArtStreet.com.AdminControl
             string strConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             conn = new SqlConnection(strConn);
             conn.Open();
-            string queryUser = "SELECT DISTINCT u.Username FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId";
+            string queryUser = "SELECT u.Username FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId AND ur.UserId = u.UserId";
             SqlCommand cmdAssignUser = new SqlCommand(queryUser, conn);
             SqlDataReader readUser = cmdAssignUser.ExecuteReader();
             if (readUser.HasRows)
@@ -206,7 +206,7 @@ namespace ArtStreet.com.AdminControl
             }
             conn.Close();
 
-
+            
             //Delete function
             SqlConnection con;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -224,7 +224,7 @@ namespace ArtStreet.com.AdminControl
 
             string query14 = "DELETE FROM tb_Customer WHERE custID = @cID";
 
-            //Response.Write("<script>alert(' " + role + "')</script>");
+            Response.Write("<script>alert(' " + role + "')</script>");
 
             if (role == "Customer")
             {
@@ -233,7 +233,6 @@ namespace ArtStreet.com.AdminControl
                 cmdRetrieve.Parameters.AddWithValue("@cID", custID);
                 cmdRetrieve.ExecuteNonQuery();
                 
-
                 SqlCommand cmdRetrieve1 = new SqlCommand(query11, con);
                 cmdRetrieve1.Parameters.AddWithValue("@cID", custID);
                 cmdRetrieve1.ExecuteNonQuery();
@@ -244,7 +243,6 @@ namespace ArtStreet.com.AdminControl
 
                 SqlCommand cmdRetrieve3 = new SqlCommand(query13, con);
                 cmdRetrieve3.Parameters.AddWithValue("@username", username);
-                cmdRetrieve3.Parameters.AddWithValue("@cID", custID);
                 cmdRetrieve3.ExecuteNonQuery();
 
                 SqlCommand cmdRetrieve0 = new SqlCommand(query14, con);
@@ -268,7 +266,6 @@ namespace ArtStreet.com.AdminControl
 
                 SqlCommand cmdRetrieve3 = new SqlCommand(query13, con);
                 cmdRetrieve3.Parameters.AddWithValue("@username", username);
-                cmdRetrieve3.Parameters.AddWithValue("@cID", custID);
                 cmdRetrieve3.ExecuteNonQuery();
 
                 SqlCommand cmdRetrieve4 = new SqlCommand(query2, con);
@@ -302,7 +299,6 @@ namespace ArtStreet.com.AdminControl
 
                 SqlCommand cmdRetrieve3 = new SqlCommand(query13, con);
                 cmdRetrieve3.Parameters.AddWithValue("@username", username);
-                cmdRetrieve3.Parameters.AddWithValue("@cID", custID);
                 cmdRetrieve3.ExecuteNonQuery();
 
                 SqlCommand cmdRetrieve6 = new SqlCommand(query3, con);
@@ -340,7 +336,7 @@ namespace ArtStreet.com.AdminControl
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con = new SqlConnection(strCon);
             con.Open();
-            string query = "SELECT u.Username FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId";
+            string query = "SELECT DISTINCT u.Username FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId";
             SqlCommand cmdRetrieve = new SqlCommand(query, con);
             SqlDataReader reader = cmdRetrieve.ExecuteReader();
             int rowIndex = 0;
@@ -367,7 +363,7 @@ namespace ArtStreet.com.AdminControl
             string strCon3 = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con3 = new SqlConnection(strCon3);
             con3.Open();
-            string queryCustID = "SELECT cust.custID FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId";
+            string queryCustID = "SELECT DISTINCT cust.custID FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId";
             SqlCommand cmdRetrieveCustID = new SqlCommand(queryCustID, con3);
             SqlDataReader readerCust = cmdRetrieveCustID.ExecuteReader();
             if (readerCust.HasRows)
@@ -394,88 +390,57 @@ namespace ArtStreet.com.AdminControl
             string strCon1 = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con1 = new SqlConnection(strCon1);
             con1.Open();
-            //Assign to the role
-            //txtSearch.Text = "Username: "+roles.Length.ToString();
 
-            //txtSearch.Text = Array.IndexOf(roles, "Admin").ToString();
+            
+            //Assign to the role
+
             if (Array.IndexOf(roles,"Admin") >= 0) //if he is admin
             {
                 //txtSearch.Text = "0";
                 if (Array.IndexOf(roles, roleName) >= 0 && roleName == "Admin") //if he is admin and degrade to artist
                 {
                     Roles.RemoveUserFromRole(userName, roleName);
-                    //update database
-                    string query1 = "UPDATE aspnet_UsersInRoles SET RoleId = (SELECT RoleId FROM aspnet_Roles WHERE RoleName = 'Artist') WHERE UserId=(SELECT UserId FROM aspnet_Users WHERE UserName=@username)";
-                    SqlCommand cmdAssign1 = new SqlCommand(query1, con1);
-                    cmdAssign1.Parameters.AddWithValue("@username",userName);
-                    cmdAssign1.ExecuteNonQuery();
-                }
-                else if(Array.IndexOf(roles, roleName) >= 0 && roleName == "Customer") //if he is admin and degrade to customer
-                {
-                    Roles.RemoveUserFromRole(userName, "Admin");
-                    Roles.RemoveUserFromRole(userName, "Artist");
-                    string query2 = "UPDATE aspnet_UsersInRoles SET RoleId = (SELECT RoleId FROM aspnet_Roles WHERE RoleName = 'Customer') WHERE UserId=(SELECT UserId FROM aspnet_Users WHERE UserName=@username)";
-                    SqlCommand cmdAssign2 = new SqlCommand(query2, con1);
-                    cmdAssign2.Parameters.AddWithValue("@username", userName);
-                    cmdAssign2.ExecuteNonQuery();
-                }
-            }
-            else if(Array.IndexOf(roles, "Artist") >= 0) //if he is artist
-            {
-                if (Array.IndexOf(roles, roleName) < 0 && roleName == "Admin") //if he is artist and upgrade to admin
-                {
-                    Roles.AddUserToRole(userName, roleName);
-                    string query3 = "UPDATE aspnet_UsersInRoles SET RoleId = (SELECT RoleId FROM aspnet_Roles WHERE RoleName = 'Admin') WHERE UserId=(SELECT UserId FROM aspnet_Users WHERE UserName=@username)";
-                    SqlCommand cmdAssign3 = new SqlCommand(query3, con1);
-                    cmdAssign3.Parameters.AddWithValue("@username", userName);
-                    cmdAssign3.ExecuteNonQuery();
-                }
-                else if (Array.IndexOf(roles, roleName) >= 0 && roleName == "Customer") //if he is artist and degrade to customer
-                {
-                    Roles.RemoveUserFromRole(userName, "Artist");
-                    string query4 = "UPDATE aspnet_UsersInRoles SET RoleId = (SELECT RoleId FROM aspnet_Roles WHERE RoleName = 'Customer') WHERE UserId=(SELECT UserId FROM aspnet_Users WHERE UserName=@username)";
-                    SqlCommand cmdAssign4 = new SqlCommand(query4, con1);
-                    cmdAssign4.Parameters.AddWithValue("@username", userName);
-                    cmdAssign4.ExecuteNonQuery();
-                }
-            }
-            else if (Array.IndexOf(roles, "Customer") >= 0) //if he is customer
-            {
-                if (Array.IndexOf(roles, roleName) < 0 && roleName == "Admin") //if he is customer and assign admin
-                {
-                    string[] userRole = {"Artist", "Admin" };
-                    Roles.AddUserToRoles(userName, userRole);
-                    string query5 = "UPDATE aspnet_UsersInRoles SET RoleId = (SELECT RoleId FROM aspnet_Roles WHERE RoleName = 'Admin') WHERE UserId=(SELECT UserId FROM aspnet_Users WHERE UserName=@username)";
-                    SqlCommand cmdAssign5 = new SqlCommand(query5, con1);
-                    cmdAssign5.Parameters.AddWithValue("@username", userName);
-                    cmdAssign5.ExecuteNonQuery();
+                    Roles.AddUserToRole(userName, "Artist");
 
                     //Insert new artistID into the database
                     int count = 0;
-                    string queryCount = "SELECT COUNT(artistID) FROM tb_Artist";
+                    string queryCount = "SELECT DISTINCT COUNT(artistID) FROM tb_Artist";
                     SqlCommand cmdCount = new SqlCommand(queryCount, con1);
                     count = (int)cmdCount.ExecuteScalar() + 1;
 
                     string artistID = "";
                     if (count >= 10)
                     {
-                        artistID = "artis_0" + count;
+                        artistID = "ats_0" + count;
                     }
                     else
                     {
-                        artistID = "artis_00" + count;
+                        artistID = "ats_00" + count;
                     }
-                    string queryAddArtist = "INSERT INTO tb_Artist(artistID, artistName, artistPhoneNo, artistCreateTime, custID, artistURL) VALUES (@artistID, NULL, NULL, CURRENT, @cID, NULL) ";
+                    string queryAddArtist = "INSERT INTO tb_Artist(artistID, artistName, artistPhoneNo, artistCreateTime, custID, artistURL) VALUES (@artistID, NULL, NULL, SYSDATETIME(), @cID, NULL) ";
                     SqlCommand cmdInsertArtist = new SqlCommand(queryAddArtist, con1);
                     cmdInsertArtist.Parameters.AddWithValue("@artistID", artistID);
                     cmdInsertArtist.Parameters.AddWithValue("@cID", custID);
                     cmdInsertArtist.ExecuteNonQuery();
+                }
+                else if(Array.IndexOf(roles, roleName) >= 0 && roleName == "Customer") //if he is admin and degrade to customer
+                {
+                    Roles.RemoveUserFromRole(userName, "Admin");
+                    Roles.AddUserToRole(userName, roleName);
+                }
+            }
+            else if(Array.IndexOf(roles, "Artist") >= 0) //if he is artist
+            {
+                if (Array.IndexOf(roles, roleName) < 0 && roleName == "Admin") //if he is artist and upgrade to admin
+                {
+                    Roles.RemoveUserFromRole(userName, "Artist");
+                    Roles.AddUserToRole(userName, roleName);
 
                     //Insert into adminID
                     int getAdminID = 0;
                     string queryGetAdminID = "SELECT COUNT(adminID) FROM tb_Admin";
                     SqlCommand cmdGetAdminID = new SqlCommand(queryGetAdminID, con1);
-                    count = (int)cmdGetAdminID.ExecuteScalar() + 1;
+                    int count = (int)cmdGetAdminID.ExecuteScalar() + 1;
 
                     string adminID = "";
                     if (getAdminID >= 10)
@@ -491,14 +456,50 @@ namespace ArtStreet.com.AdminControl
                     cmdInsertAdmin.Parameters.AddWithValue("@adminID", adminID);
                     cmdInsertAdmin.Parameters.AddWithValue("@cID", custID);
                     cmdInsertAdmin.ExecuteNonQuery();
+
+
+                }
+                else if (Array.IndexOf(roles, roleName) >= 0 && roleName == "Customer") //if he is artist and degrade to customer
+                {
+                    Roles.RemoveUserFromRole(userName, "Artist");
+                    Roles.AddUserToRole(userName, roleName);
+                    
+                }
+            }
+            else if (Array.IndexOf(roles, "Customer") >= 0) //if he is customer
+            {
+                
+                if (Array.IndexOf(roles, roleName) < 0 && roleName == "Admin") //if he is customer and assign admin
+                {
+                    Roles.RemoveUserFromRole(userName, "Customer");
+                    Roles.AddUserToRole(userName, roleName);
+
+                    //Insert into adminID
+                    int getAdminID = 0;
+                    string queryGetAdminID = "SELECT COUNT(adminID) FROM tb_Admin";
+                    SqlCommand cmdGetAdminID = new SqlCommand(queryGetAdminID, con1);
+                    int count = (int)cmdGetAdminID.ExecuteScalar() + 1;
+
+                    string adminID = "";
+                    if (getAdminID >= 10)
+                    {
+                        adminID = "ats_0" + getAdminID;
+                    }
+                    else
+                    {
+                        adminID = "ats_00" + getAdminID;
+                    }
+                    string queryAddAdmin = "INSERT INTO tb_Admin(adminID, adminName, adminStatus, custID) VALUES (@adminID, NULL, 'Active', @cID) ";
+                    SqlCommand cmdInsertAdmin = new SqlCommand(queryAddAdmin, con1);
+                    cmdInsertAdmin.Parameters.AddWithValue("@adminID", adminID);
+                    cmdInsertAdmin.Parameters.AddWithValue("@cID", custID);
+                    cmdInsertAdmin.ExecuteNonQuery();
                 }
                 else if (Array.IndexOf(roles, roleName) < 0 && roleName == "Artist") //if he is customer and assign artist
                 {
+                    
+                    Roles.RemoveUserFromRole(userName, "Customer");
                     Roles.AddUserToRole(userName, roleName);
-                    string query6 = "UPDATE aspnet_UsersInRoles SET RoleId = (SELECT RoleId FROM aspnet_Roles WHERE RoleName = 'Artist') WHERE UserId=(SELECT UserId FROM aspnet_Users WHERE UserName=@username)";
-                    SqlCommand cmdAssign6 = new SqlCommand(query6, con1);
-                    cmdAssign6.Parameters.AddWithValue("@username", userName);
-                    cmdAssign6.ExecuteNonQuery();
 
                     //Insert new artistID into the database
                     int count = 0;
@@ -509,11 +510,11 @@ namespace ArtStreet.com.AdminControl
                     string artistID = "";
                     if (count >= 10)
                     {
-                        artistID = "artis_0" + count;
+                        artistID = "ats_0" + count;
                     }
                     else
                     {
-                        artistID = "artis_00" + count;
+                        artistID = "ats_00" + count;
                     }
                     string queryAddArtist = "INSERT INTO tb_Artist(artistID, artistName, artistPhoneNo, artistCreateTime, custID, artistURL) VALUES (@artistID, NULL, NULL, SYSDATETIME(), @cID, NULL) ";
                     SqlCommand cmdInsertArtist = new SqlCommand(queryAddArtist, con1);
@@ -524,6 +525,7 @@ namespace ArtStreet.com.AdminControl
             }
             con1.Close();
             userGrid.EditIndex = -1;
+            Response.Write("<script>alert('Update Sucessfully!')</script>");
             gv_dataBind();
         }
 
@@ -609,5 +611,72 @@ namespace ArtStreet.com.AdminControl
             datasetRole.Columns.Add("RoleNames");
             datasetRole.Columns.Add("emails");
         }*/
+        //**********************************Row Updating**************************************
+        //update database
+        /*
+          //if he is admin and degrade to artist
+        string query1 = "UPDATE aspnet_UsersInRoles SET RoleId = (SELECT RoleId FROM aspnet_Roles WHERE RoleName = 'Artist') WHERE UserId=(SELECT UserId FROM aspnet_Users WHERE UserName=@username)";
+        SqlCommand cmdAssign1 = new SqlCommand(query1, con1);
+        cmdAssign1.Parameters.AddWithValue("@username",userName);
+                    cmdAssign1.ExecuteNonQuery();
+
+        //if he is admin and degrade to custoemr
+        Roles.RemoveUserFromRole(userName, "Artist");
+                    string query2 = "UPDATE aspnet_UsersInRoles SET RoleId = (SELECT RoleId FROM aspnet_Roles WHERE RoleName = 'Customer') WHERE UserId=(SELECT UserId FROM aspnet_Users WHERE UserName=@username)";
+                    SqlCommand cmdAssign2 = new SqlCommand(query2, con1);
+                    cmdAssign2.Parameters.AddWithValue("@username", userName);
+                    cmdAssign2.ExecuteNonQuery();
+
+        //if he is artist and upgrade to admin
+         string query3 = "UPDATE aspnet_UsersInRoles SET RoleId = (SELECT RoleId FROM aspnet_Roles WHERE RoleName = 'Admin') WHERE UserId=(SELECT UserId FROM aspnet_Users WHERE UserName=@username)";
+                    SqlCommand cmdAssign3 = new SqlCommand(query3, con1);
+                    cmdAssign3.Parameters.AddWithValue("@username", userName);
+                    
+
+                    try
+                    {
+                        cmdAssign3.ExecuteNonQuery();
+                    }
+                    catch (SqlException ex)
+                    {
+
+                    }
+
+        //if he is artist and degrade to customer
+        string query4 = "UPDATE aspnet_UsersInRoles SET RoleId = (SELECT RoleId FROM aspnet_Roles WHERE RoleName = 'Customer') WHERE UserId=(SELECT UserId FROM aspnet_Users WHERE UserName=@username)";
+                    SqlCommand cmdAssign4 = new SqlCommand(query4, con1);
+                    cmdAssign4.Parameters.AddWithValue("@username", userName);
+                    cmdAssign4.ExecuteNonQuery();
+
+        //if he is customer and upgrade to artist
+        string query6 = "UPDATE aspnet_UsersInRoles SET RoleId = (SELECT RoleId FROM aspnet_Roles WHERE RoleName = 'Artist') WHERE UserId=(SELECT UserId FROM aspnet_Users WHERE UserName=@username)";
+                    SqlCommand cmdAssign6 = new SqlCommand(query6, con1);
+                    cmdAssign6.Parameters.AddWithValue("@username", userName);
+
+                    try
+                    {
+                        cmdAssign6.ExecuteNonQuery();
+                    }
+                    catch (SqlException ex)
+                    {
+
+                    }
+
+        //if he is customer and upgrade to admin
+        string[] userRole = { "Artist", "Admin" };
+                    string query5 = "UPDATE aspnet_UsersInRoles SET RoleId = (SELECT RoleId FROM aspnet_Roles WHERE RoleName = 'Admin') WHERE UserId=(SELECT UserId FROM aspnet_Users WHERE UserName=@username)";
+                    SqlCommand cmdAssign5 = new SqlCommand(query5, con1);
+                    cmdAssign5.Parameters.AddWithValue("@username", userName);
+                    
+
+                    try
+                    {
+                        cmdAssign5.ExecuteNonQuery();
+                    }
+                    catch (SqlException ex)
+                    {
+                        
+                    }
+        */
     }
 }

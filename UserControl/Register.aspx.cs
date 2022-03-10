@@ -25,7 +25,7 @@ namespace ArtStreet.UserControl
             string strConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             conn = new SqlConnection(strConn);
             conn.Open();
-            string queryCount = "SELECT COUNT(*) FROM tb_Customer";
+            string queryCount = "SELECT DISTINCT COUNT(*) FROM tb_Customer";
             SqlCommand cmdCount = new SqlCommand(queryCount, conn);
             int id = (int)cmdCount.ExecuteScalar()+1;
 
@@ -54,7 +54,7 @@ namespace ArtStreet.UserControl
             int index = cmdInsert.ExecuteNonQuery();
             if(index <= 0)
             {
-                Response.Write("<script>alert(' Error')</script>");
+                Response.Write("<script>alert('Error in creating user')</script>");
             }
 
             //********************************************
