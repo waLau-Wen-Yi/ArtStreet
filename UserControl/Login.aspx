@@ -30,7 +30,7 @@
 </head>
 <body style="width: 1459px; height: 470px">
     <form id="form1" runat="server" style="text-align: center; align-content: center">
-        <asp:Login ID="Login1" runat="server" CreateUserUrl="~/UserControl/Register.aspx" DestinationPageUrl="~/Home/Home.aspx" PasswordRecoveryUrl="~/UserControl/Recovery.aspx" RememberMeSet="True" CssClass="auto-style1" BackColor="#FFFBD6" BorderColor="#FFDFAD" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#333333" TextLayout="TextOnTop">
+        <asp:Login ID="Login1" runat="server" CreateUserUrl="~/UserControl/Register.aspx" DestinationPageUrl="~/Home/Artworks.aspx" PasswordRecoveryUrl="~/UserControl/Recovery.aspx" RememberMeSet="True" CssClass="auto-style1" BackColor="#FFFBD6" BorderColor="#FFDFAD" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#333333" TextLayout="TextOnTop">
             <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
             <LayoutTemplate>
                 <table cellpadding="1" cellspacing="0" style="border-collapse: collapse;">
