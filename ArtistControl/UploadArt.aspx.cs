@@ -90,26 +90,24 @@ namespace ArtStreet.ArtistControl
             string queryCount = "SELECT DISTINCT COUNT(artID) FROM tb_Art";
             SqlCommand cmdCount = new SqlCommand(queryCount, con);
             count = (int)cmdCount.ExecuteScalar() + 1;
-
-            string artID = "";
-            if (count >= 10)
-            {
-                artID = "a_0" + count;
-            }
-            else
-            {
-                artID = "a_00" + count;
-            }
-            //
             con.Close();
 
+            string artID = "";
             //Insert these details into the art table//
-            for(int i=0; i<qtyArt; i++)
+            for (int i=0; i<qtyArt; i++)
             {
                 con.Open();
                 string queryUpdate = "INSERT INTO tb_Art(artID, artName, artCreateTime , artType, artGenre, artCollection, artURL, artistID, artPrice) VALUES (@artID, @artName, SYSDATETIME(), @artType, @artGenre, @artCollection, @artURL, @artistID, @artPrice)";
                 cmdRetrieve = new SqlCommand(queryUpdate, con);
-                cmdRetrieve.Parameters.AddWithValue("@artID", (artID+i));
+                if ((count+i) >= 10)
+                {
+                    artID = "a_0" + (count+i);
+                }
+                else
+                {
+                    artID = "a_00" + (count+i);
+                }
+                cmdRetrieve.Parameters.AddWithValue("@artID", artID);
                 cmdRetrieve.Parameters.AddWithValue("@artName", artName);
                 cmdRetrieve.Parameters.AddWithValue("@artType", type);
                 cmdRetrieve.Parameters.AddWithValue("@artGenre", genre);

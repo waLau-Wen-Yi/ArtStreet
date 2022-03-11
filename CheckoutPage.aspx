@@ -1,88 +1,59 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/ArtStreet.Master" CodeBehind="CheckoutPage.aspx.cs" Inherits="ArtStreet.com.CheckoutPage" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="overflow-y: scroll; height: 669px; width: 80%; margin: 30px auto;">
-
+    
     <style type="text/css">
-        .body{
-            width: 75%;
-            margin: 30px auto;
-            height:669px;
-        }
+        
         .title-label{
             font-size:30px;
-            
         }
         .title-container{
             text-align: center;
         }
+
         input[type="Text"] .backBtn{
-            text-align:left;
-            font-size: 200px;
-        }
-        .auto-style1 {
-            width: 99%;
-            height: 395px;
-        }
-        .auto-style2 {
-            width: 253px;
-        }
-        .auto-style5 {
-            width: 195px;
-            float:right;
-        }
-        .datalist-container{
-            vertical-align: top;
-        }
+            text-align:left; 
+        } 
         .datalist{
-            margin-left: 25%;
+            margin-left: 60px;
         }
-        .auto-style6 {
-            height: 26px;
-        }
-        .auto-style7 {
-            width: 100%;
-            height: 163px;
-            
-        }
+        
+        
         .auto-style8 {
-            height: 53px;
-            text-align: right;
-            padding-right: 40px;
+            width: 168px;
         }
-        .total-item{
-            text-align: right;
-            padding-right: 40px;
-        }
+        
+        
     </style>
 
+    <div style="overflow-y: scroll; height: 200px; width: 80%; margin: 30px auto;">
 
         <div class="title-container">
             <u><asp:Label ID="Label1" runat="server" Text="Checkout Page" class="title-label"></asp:Label></u>
         </div>
 
-        <table class="auto-style1">
+        <table class="height: 300px;">
             <tr>
-                <td class="auto-style5">
+                <td class="">
                     <asp:Label ID="lblName" runat="server" Text="Buyer Name:"></asp:Label>
                 </td>
-                <td class="auto-style2">
+                <td class="auto-style8">
                     <input id="Text1" type="text" /></td>
                 <td rowspan="4" class="datalist-container">
-                    <asp:DataList ID="DataList1" runat="server" class="datalist">
+                    <asp:DataList ID="DataList1" runat="server" class="datalist" Height="">
                         <ItemTemplate>
                             <table style="width:100%;border-bottom:1px solid grey">
                                 <tr>
                                     <td rowspan="3">
                                         <img alt="" src="<%# Eval("artURL") %>" />
                                     </td>
-                                    <td class="auto-style6">Name of product:<%# Eval("productName") %></td>
+                                    <td class="">Name of product:<%# Eval("productName") %></td>
                                 </tr>
                                 <tr>
                                     <td>Quantity:<%# Eval("quantity") %></td>
                                 </tr>
                                 <tr>
-                                    <td class="auto-style6">Current price:<%# Eval("currentPrice") %></td>
+                                    <td class="">Current price:<%# Eval("currentPrice") %></td>
                                 </tr>
                             </table>
                         </ItemTemplate>
@@ -90,31 +61,31 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style5">
+                <td class="total-item">
                     <asp:Label ID="lblEmail" runat="server" Text="Email:"></asp:Label>
                 </td>
-                <td class="auto-style2">
+                <td class="auto-style8">
                     <input id="Text2" type="text" /></td>
             </tr>
             <tr>
-                <td class="auto-style5">
+                <td class="total-item">
                     <asp:Label ID="lblPhoneNo" runat="server" Text="Phone No:"></asp:Label>
                 </td>
-                <td class="auto-style2">
+                <td class="auto-style8">
                     <input id="Text3" type="text" /></td>
             </tr>
             <tr>
-                <td class="auto-style5">
+                <td class="total-item">
                     <asp:Label ID="lblPayment" runat="server" Text="Select your payment method:"></asp:Label>
                 </td>
-                <td class="auto-style2">
-                    &nbsp;</td>
+                <td class="auto-style8">
+                    </td>
             </tr>
         </table>
 
-        <table class="auto-style7">
+        <table class="total-item">
             <tr>
-                <td class="auto-style8">
+                <td class="total-item">
                     <asp:Label ID="lblCharge" runat="server"></asp:Label>
                 </td>
             </tr>

@@ -37,18 +37,20 @@ namespace ArtStreet.UserControl
 
             //string query2 = "SELECT UserId FROM aspnet_Membership WHERE email = '@email'";
 
-            string query = "INSERT INTO tb_Customer (custID, custCreateTime, email) VALUES (@cID, SYSDATETIME(), @email)";
+            string query = "INSERT INTO tb_Customer (custID, custCreateTime, email, balance) VALUES (@cID, SYSDATETIME(), @email, 5000)";
             string email = Membership.GetUser((sender as CreateUserWizard).UserName).Email;
             
             SqlCommand cmdInsert = new SqlCommand(query, con);
-
+            string custID;
             if (id < 10)
             {
-                cmdInsert.Parameters.AddWithValue("@cID", ("c_00" + id.ToString()));
+                custID = "c_00" + id;
+                cmdInsert.Parameters.AddWithValue("@cID", custID);
             }
             else
             {
-                cmdInsert.Parameters.AddWithValue("@cID", ("c_0" + id.ToString()));
+                custID = "c_0" + id;
+                cmdInsert.Parameters.AddWithValue("@cID", custID);
             }
             cmdInsert.Parameters.AddWithValue("@email", Membership.GetUser((sender as CreateUserWizard).UserName).Email);
 
@@ -60,6 +62,32 @@ namespace ArtStreet.UserControl
 
             //********************************************
             Roles.AddUserToRole(Membership.GetUser((sender as CreateUserWizard).UserName).UserName, "Customer");
+            con.Close();
+
+            //obtain cart count
+            con.Open();
+            string queryCartCount = "SELECT COUNT(cartID) FROM tb_Cart";
+            SqlCommand cmdCartCount = new SqlCommand(queryCartCount,con);
+            int countCart = (int)cmdCartCount.ExecuteScalar()+1;
+            con.Close();
+
+            con.Open();
+            string queryCart = "INSERT INTO tb_Cart (cartID, custID) VALUES (@cartID, @cID)";
+            SqlCommand cmdCart = new SqlCommand(queryCart, con);
+            //create new cart id
+            string cartID;
+            if (id < 10)
+            {
+                cartID = "c_00" + countCart;
+                cmdInsert.Parameters.AddWithValue("@cartID", cartID);
+            }
+            else
+            {
+                cartID = "c_0" + countCart;
+                cmdInsert.Parameters.AddWithValue("@cartID", cartID);
+            }
+            cmdCart.Parameters.AddWithValue("@cID", custID);
+            cmdCart.ExecuteNonQuery();
             con.Close();
         }
     }
