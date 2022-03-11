@@ -102,6 +102,12 @@
             </td>
         </tr>
         <tr>
+            <td class="auto-style9">Stock :&nbsp;&nbsp;&nbsp;&nbsp; </td>
+            <td>
+                <asp:TextBox ID="txtQty" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
             <td class="auto-style9">Art Price :&nbsp;&nbsp;&nbsp; </td>
             <td>
                 RM

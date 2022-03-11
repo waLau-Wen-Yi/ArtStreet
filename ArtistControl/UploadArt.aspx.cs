@@ -69,7 +69,7 @@ namespace ArtStreet.ArtistControl
             string collection = ddlCollection.SelectedValue.ToString();
             string genre = radioGenre.SelectedValue.ToString();
             double price = Convert.ToDouble(String.Format("{0:0.##}", txtPrice.Text.ToString()));
-
+            int qtyArt = Convert.ToInt32(txtQty.Text);
 
             //obtain artistID from the customer table
             SqlConnection con;
@@ -104,19 +104,24 @@ namespace ArtStreet.ArtistControl
             con.Close();
 
             //Insert these details into the art table//
-            con.Open();
-            string queryUpdate = "INSERT INTO tb_Art(artID, artName, artCreateTime , artType, artGenre, artCollection, artURL, artistID, artPrice) VALUES (@artID, @artName, SYSDATETIME(), @artType, @artGenre, @artCollection, @artURL, @artistID, @artPrice)";
-            cmdRetrieve = new SqlCommand(queryUpdate, con);
-            cmdRetrieve.Parameters.AddWithValue("@artID", artID);
-            cmdRetrieve.Parameters.AddWithValue("@artName", artName);
-            cmdRetrieve.Parameters.AddWithValue("@artType", type);
-            cmdRetrieve.Parameters.AddWithValue("@artGenre", genre);
-            cmdRetrieve.Parameters.AddWithValue("@artCollection", collection);
-            cmdRetrieve.Parameters.AddWithValue("@artURL", artUrl);
-            cmdRetrieve.Parameters.AddWithValue("@artistID", artistID);
-            cmdRetrieve.Parameters.AddWithValue("@artPrice", price);
-            cmdRetrieve.ExecuteNonQuery();
-
+            for(int i=0; i<qtyArt; i++)
+            {
+                con.Open();
+                string queryUpdate = "INSERT INTO tb_Art(artID, artName, artCreateTime , artType, artGenre, artCollection, artURL, artistID, artPrice) VALUES (@artID, @artName, SYSDATETIME(), @artType, @artGenre, @artCollection, @artURL, @artistID, @artPrice)";
+                cmdRetrieve = new SqlCommand(queryUpdate, con);
+                cmdRetrieve.Parameters.AddWithValue("@artID", (artID+i));
+                cmdRetrieve.Parameters.AddWithValue("@artName", artName);
+                cmdRetrieve.Parameters.AddWithValue("@artType", type);
+                cmdRetrieve.Parameters.AddWithValue("@artGenre", genre);
+                cmdRetrieve.Parameters.AddWithValue("@artCollection", collection);
+                cmdRetrieve.Parameters.AddWithValue("@artURL", artUrl);
+                cmdRetrieve.Parameters.AddWithValue("@artistID", artistID);
+                cmdRetrieve.Parameters.AddWithValue("@artPrice", price);
+                cmdRetrieve.ExecuteNonQuery();
+                con.Close();
+            }
+            
+            
             Response.Write("<script>alert('Artwork Submitted Sucessfully!')</script>");
             txtArtName.Text = String.Empty;
             txtArt.Text = String.Empty;
@@ -130,5 +135,6 @@ namespace ArtStreet.ArtistControl
         {
 
         }
+
     }
 }
