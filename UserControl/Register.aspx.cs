@@ -22,7 +22,14 @@ namespace ArtStreet.UserControl
         {
 
             DateTime time = DateTime.Now;
-            id = id + 1;
+            SqlConnection conn;
+            string strConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            conn = new SqlConnection(strConn);
+            conn.Open();
+            string queryCount = "SELECT DISTINCT COUNT(*) FROM tb_Customer";
+            SqlCommand cmdCount = new SqlCommand(queryCount, conn);
+            int id = (int)cmdCount.ExecuteScalar() + 1;
+            conn.Close();
 
             SqlConnection con;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -33,7 +40,7 @@ namespace ArtStreet.UserControl
 
             string query = "INSERT INTO tb_Customer (custID, custCreateTime, email) VALUES (@cID, SYSDATETIME(), @email)";
             string email = Membership.GetUser((sender as CreateUserWizard).UserName).Email;
-            
+
             SqlCommand cmdInsert = new SqlCommand(query, con);
 
             if (id < 10)
@@ -47,13 +54,15 @@ namespace ArtStreet.UserControl
             cmdInsert.Parameters.AddWithValue("@email", Membership.GetUser((sender as CreateUserWizard).UserName).Email);
 
             int index = cmdInsert.ExecuteNonQuery();
-            if(index <= 0)
+            if (index <= 0)
             {
-                Response.Write("<script>alert(' Error')</script>");
+                Response.Write("<script>alert('Error in creating user')</script>");
             }
 
             //********************************************
             Roles.AddUserToRole(Membership.GetUser((sender as CreateUserWizard).UserName).UserName, "Customer");
+            con.Close();
+
         }
     }
 }

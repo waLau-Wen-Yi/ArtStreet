@@ -73,6 +73,9 @@
     <Content Include="App_Data\ArtDB_log.ldf">
       <DependentUpon>ArtDB.mdf</DependentUpon>
     </Content>
+    <Content Include="CartandPayment\Cart.aspx" />
+    <Content Include="CartandPayment\StyleSheet1.css" />
+    <Content Include="CartandPayment\WebForm1.aspx" />
     <Content Include="CheckoutPage.aspx" />
     <Content Include="Home\ArtCulture.aspx" />
     <Content Include="Home\Artists.aspx" />
@@ -103,6 +106,20 @@
     </Compile>
     <Compile Include="ArtStreet.Master.designer.cs">
       <DependentUpon>ArtStreet.Master</DependentUpon>
+    </Compile>
+    <Compile Include="CartandPayment\Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CartandPayment\Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CartandPayment\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CartandPayment\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="CheckoutPage.aspx.cs">
       <DependentUpon>CheckoutPage.aspx</DependentUpon>

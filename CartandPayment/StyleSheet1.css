@@ -1,0 +1,31 @@
+﻿div {
+    width: 230px;
+    float: left;
+    margin-top: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+#rectangle1 {
+    width: 230px;
+    height: 70px;
+    border: 1px solid black;
+}
+
+#rectangle2 {
+    width: 230px;
+    height: 70px;
+    border: 1px solid black;
+}
+
+#rectangle3 {
+    width: 230px;
+    height: 70px;
+    border: 1px solid black;
+}
+
+#rectangle4 {
+    width: 230px;
+    height: 70px;
+    border: 1px solid black;
+}
