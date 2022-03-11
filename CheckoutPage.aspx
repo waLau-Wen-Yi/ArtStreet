@@ -1,10 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CheckoutPage.aspx.cs" Inherits="ArtStreet.com.CheckoutPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/ArtStreet.Master" CodeBehind="CheckoutPage.aspx.cs" Inherits="ArtStreet.com.CheckoutPage" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div style="overflow-y: scroll; height: 669px; width: 80%; margin: 30px auto;">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
     <style type="text/css">
         .body{
             width: 75%;
@@ -57,14 +55,11 @@
             padding-right: 40px;
         }
     </style>
-</head>
-<body class="body">
-    <form id="form1" runat="server">
+
+
         <div class="title-container">
             <u><asp:Label ID="Label1" runat="server" Text="Checkout Page" class="title-label"></asp:Label></u>
         </div>
-
-        <asp:Button ID="backBtn" runat="server" Text="←" Width="124px" CssClass="backBtn" Font-Bold="True" Font-Italic="False" Font-Names="ZSym" Font-Size="Large"/>
 
         <table class="auto-style1">
             <tr>
@@ -135,6 +130,5 @@
             </tr>
         </table>
 
-    </form>
-</body>
-</html>
+        </div>
+</asp:Content>

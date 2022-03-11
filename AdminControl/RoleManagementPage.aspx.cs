@@ -50,13 +50,13 @@ namespace ArtStreet.com.AdminControl
 
             if ((string)this.Session["filterRole"] == null || (string)this.Session["filterRole"] == "0")
             {
-               query = "SELECT DISTINCT cust.custID, u.Username, cust.custName, RoleName, cust.email FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId AND u.UserId = ur.UserId";
+               query = "SELECT DISTINCT cust.custID, u.Username, cust.custName, RoleName, cust.email FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId AND u.UserId = ur.UserId ORDER BY cust.custID";
                SqlCommand cmdAssign = new SqlCommand(query, con);
                custList = cmdAssign.ExecuteReader();
             }
             else
             {
-                query = "SELECT DISTINCT cust.custID, u.Username, cust.custName, RoleName, cust.email FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId AND u.UserId = ur.UserId AND RoleName = @roleName";
+                query = "SELECT DISTINCT cust.custID, u.Username, cust.custName, RoleName, cust.email FROM aspnet_Membership AS m, tb_Customer AS cust, aspnet_Users AS u, aspnet_Roles AS r, aspnet_UsersInRoles AS ur WHERE m.Email = cust.email AND u.UserId = m.UserId AND ur.RoleId = r.RoleId AND u.UserId = ur.UserId AND RoleName = @roleName ORDER BY cust.custID";
                 SqlCommand cmdAssign = new SqlCommand(query, con);
                 cmdAssign.Parameters.AddWithValue("@roleName",(string)this.Session["filterRole"]);
                 custList = cmdAssign.ExecuteReader();
@@ -422,6 +422,12 @@ namespace ArtStreet.com.AdminControl
                     cmdInsertArtist.Parameters.AddWithValue("@artistID", artistID);
                     cmdInsertArtist.Parameters.AddWithValue("@cID", custID);
                     cmdInsertArtist.ExecuteNonQuery();
+
+                    string queryUpdateArtist = "UPDATE tb_Customer SET artistID = @artistID WHERE custID = @cID";
+                    SqlCommand cmdUpdateArtist = new SqlCommand(queryUpdateArtist, con1);
+                    cmdUpdateArtist.Parameters.AddWithValue("@artistID", artistID);
+                    cmdUpdateArtist.Parameters.AddWithValue("@cID", custID);
+                    cmdUpdateArtist.ExecuteNonQuery();
                 }
                 else if(Array.IndexOf(roles, roleName) >= 0 && roleName == "Customer") //if he is admin and degrade to customer
                 {
@@ -445,11 +451,11 @@ namespace ArtStreet.com.AdminControl
                     string adminID = "";
                     if (getAdminID >= 10)
                     {
-                        adminID = "artis_0" + getAdminID;
+                        adminID = "adm_0" + getAdminID;
                     }
                     else
                     {
-                        adminID = "artis_00" + getAdminID;
+                        adminID = "adm_00" + getAdminID;
                     }
                     string queryAddAdmin = "INSERT INTO tb_Admin(adminID, adminName, adminStatus, custID) VALUES (@adminID, NULL, 'Active', @cID) ";
                     SqlCommand cmdInsertAdmin = new SqlCommand(queryAddAdmin, con1);
@@ -483,11 +489,11 @@ namespace ArtStreet.com.AdminControl
                     string adminID = "";
                     if (getAdminID >= 10)
                     {
-                        adminID = "ats_0" + getAdminID;
+                        adminID = "adm_0" + getAdminID;
                     }
                     else
                     {
-                        adminID = "ats_00" + getAdminID;
+                        adminID = "adm_00" + getAdminID;
                     }
                     string queryAddAdmin = "INSERT INTO tb_Admin(adminID, adminName, adminStatus, custID) VALUES (@adminID, NULL, 'Active', @cID) ";
                     SqlCommand cmdInsertAdmin = new SqlCommand(queryAddAdmin, con1);
@@ -521,6 +527,12 @@ namespace ArtStreet.com.AdminControl
                     cmdInsertArtist.Parameters.AddWithValue("@artistID", artistID);
                     cmdInsertArtist.Parameters.AddWithValue("@cID", custID);
                     cmdInsertArtist.ExecuteNonQuery();
+
+                    string queryUpdateArtist = "UPDATE tb_Customer SET artistID = @artistID WHERE custID = @cID";
+                    SqlCommand cmdUpdateArtist = new SqlCommand(queryUpdateArtist, con1);
+                    cmdUpdateArtist.Parameters.AddWithValue("@artistID", artistID);
+                    cmdUpdateArtist.Parameters.AddWithValue("@cID", custID);
+                    cmdUpdateArtist.ExecuteNonQuery();
                 }
             }
             con1.Close();

@@ -28,6 +28,7 @@ namespace ArtStreet.UserControl
             string queryCount = "SELECT DISTINCT COUNT(*) FROM tb_Customer";
             SqlCommand cmdCount = new SqlCommand(queryCount, conn);
             int id = (int)cmdCount.ExecuteScalar()+1;
+            conn.Close();
 
             SqlConnection con;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -59,6 +60,7 @@ namespace ArtStreet.UserControl
 
             //********************************************
             Roles.AddUserToRole(Membership.GetUser((sender as CreateUserWizard).UserName).UserName, "Customer");
+            con.Close();
         }
     }
 }
