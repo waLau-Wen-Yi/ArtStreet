@@ -41,7 +41,7 @@
                 <%addCart_Confirm();%>
             }
             else {
-               You have cancel the action: Add item to cart to cart");
+               alert("You have cancel the action: Add item to cart to cart");
             }
         }
     </script>
