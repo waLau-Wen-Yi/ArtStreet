@@ -46,7 +46,7 @@ namespace ArtStreet.com
                 txtPhoneNo.Text = phoneNo;
 
                 //obtain sum of the prices
-                string queryPrice = "SELECT SUM(a.artPrice) FROM tb_ArtCust AS ac W"
+                string queryPrice = "SELECT SUM(a.artPrice) FROM tb_ArtCust AS ac W";
             }
         }
 
