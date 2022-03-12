@@ -13,7 +13,6 @@ namespace ArtStreet.Home
     public partial class Artworks : System.Web.UI.Page
     {
         string addItemID = "";
-        string addItemName = "";
 
         protected void addCart_Confirm()
         {
@@ -23,21 +22,16 @@ namespace ArtStreet.Home
                 SqlConnection sqlConnect = new SqlConnection(strConnection);
                 sqlConnect.Open();
 
-                string strCmdRetrieve = "SELECT COUNT([cartID]) AS cartCount FROM [tb_Cart]";
+                string strCmdRetrieve = "SELECT [custID] FROM [tb_Customer] WHERE [email] = @email";
                 SqlCommand cmdRetrieve = new SqlCommand(strCmdRetrieve, sqlConnect);
-                int cartCount = (int)cmdRetrieve.ExecuteScalar();
-                string cartID = "ct_" + String.Format("{0:000}", ++cartCount);
-
-                strCmdRetrieve = "SELECT [artID] FROM [tb_Art] WHERE [artName] = @artName";
                 cmdRetrieve = new SqlCommand(strCmdRetrieve, sqlConnect);
-                cmdRetrieve.Parameters.AddWithValue("@artName", addItemName);
-                addItemID = (string)cmdRetrieve.ExecuteScalar();
+                cmdRetrieve.Parameters.AddWithValue("@email", Membership.GetUser().Email);
+                string custID = (string)cmdRetrieve.ExecuteScalar();
 
-                strCmdRetrieve = "INSERT INTO tb_Cart(cartID, artID, custID) VALUES (@cartID, @artID, @custID)";
+                strCmdRetrieve = "INSERT INTO tb_ArtCust(artID, custID) VALUES (@artID, @custID)";
                 cmdRetrieve = new SqlCommand(strCmdRetrieve, sqlConnect);
-                cmdRetrieve.Parameters.AddWithValue("@cartID", cartID);
                 cmdRetrieve.Parameters.AddWithValue("@artID", addItemID);
-                cmdRetrieve.Parameters.AddWithValue("@custID", Membership.GetUser().UserName);
+                cmdRetrieve.Parameters.AddWithValue("@custID", custID);
                 cmdRetrieve.ExecuteNonQuery();
             }
             else if (IsPostBack && Membership.GetUser() == null)
@@ -54,10 +48,10 @@ namespace ArtStreet.Home
         protected void btn_addCart_Click(object sender, EventArgs e)
         {
             var button = (Control)sender;
-            var artName = button.NamingContainer.FindControl("artNameLabel");
+            var artName = button.NamingContainer.FindControl("artIDLabel");
             if (artName != null)
             {
-                addItemName = ((Label)artName).Text;
+                addItemID = ((Label)artName).Text;
             }
         }
     }

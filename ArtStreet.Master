@@ -54,8 +54,19 @@
                 </td>
                 <td class="auto-style4">
                     <asp:LoginName ID="LoginName1" runat="server" />
-&nbsp;&nbsp;&nbsp;
                     <asp:LoginStatus ID="LoginStatus1" runat="server" />
+&nbsp;&nbsp;&nbsp;
+                    <asp:LoginName ID="LoginName2" runat="server" />
+                    <asp:LoginStatus ID="LoginStatus2" runat="server" />
+                    <br />
+                    <asp:LoginView ID="LoginView1" runat="server">
+                        <AnonymousTemplate>
+                            Havent logged in
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            Logged in
+                        </LoggedInTemplate>
+                    </asp:LoginView>
                 </td>
             </tr>
             <tr>
