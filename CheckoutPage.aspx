@@ -17,11 +17,32 @@
         .datalist{
             margin-left: 60px;
         }
+        .total-item{
+            text-align: right;
+        }
         
         
         .auto-style8 {
-            width: 168px;
+            height: 136px;
         }
+        .auto-style9 {
+            height: 81px;
+        }
+       
+        
+        
+        .auto-style10 {
+            text-align: right;
+            width: 761px;
+        }
+       
+        
+        
+        .auto-style11 {
+            text-align: right;
+            width: 207px;
+        }
+       
         
         
     </style>
@@ -34,13 +55,14 @@
 
         <table class="height: 300px;">
             <tr>
-                <td class="">
+                <td class="auto-style11">
                     <asp:Label ID="lblName" runat="server" Text="Buyer Name:"></asp:Label>
                 </td>
-                <td class="auto-style8">
-                    <input id="Text1" type="text" /></td>
+                <td class="auto-style9" id="txtName">
+                    <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+                </td>
                 <td rowspan="4" class="datalist-container">
-                    <asp:DataList ID="DataList1" runat="server" class="datalist" Height="">
+                    <asp:DataList ID="DataList1" runat="server" class="datalist">
                         <ItemTemplate>
                             <table style="width:100%;border-bottom:1px solid grey">
                                 <tr>
@@ -61,29 +83,34 @@
                 </td>
             </tr>
             <tr>
-                <td class="total-item">
+                <td class="auto-style11">
                     <asp:Label ID="lblEmail" runat="server" Text="Email:"></asp:Label>
                 </td>
                 <td class="auto-style8">
-                    <input id="Text2" type="text" /></td>
+                    <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                </td>
             </tr>
             <tr>
-                <td class="total-item">
+                <td class="auto-style11">
                     <asp:Label ID="lblPhoneNo" runat="server" Text="Phone No:"></asp:Label>
                 </td>
                 <td class="auto-style8">
-                    <input id="Text3" type="text" /></td>
+                    <asp:TextBox ID="txtPhoneNo" runat="server"></asp:TextBox>
+                </td>
             </tr>
             <tr>
-                <td class="total-item">
+                <td class="auto-style11">
                     <asp:Label ID="lblPayment" runat="server" Text="Select your payment method:"></asp:Label>
                 </td>
                 <td class="auto-style8">
+                    <asp:RadioButtonList ID="RadioButtonList1" runat="server">
+                        <asp:ListItem>Credit/Debit Card</asp:ListItem>
+                    </asp:RadioButtonList>
                     </td>
             </tr>
         </table>
 
-        <table class="total-item">
+        <table class="auto-style10">
             <tr>
                 <td class="total-item">
                     <asp:Label ID="lblCharge" runat="server"></asp:Label>
@@ -96,7 +123,7 @@
             </tr>
             <tr>
                 <td class="total-item">
-                    <asp:Button ID="chkoutBtn" runat="server" BackColor="Lime" Font-Size="Medium" Height="41px" Text="Checkout" Width="150px" />
+                    <asp:Button ID="chkoutBtn" runat="server" BackColor="Lime" Font-Size="Medium" Height="41px" Text="Checkout" Width="150px" OnClick="chkoutBtn_Click" />
                 </td>
             </tr>
         </table>

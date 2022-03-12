@@ -54,8 +54,8 @@
                 </td>
                 <td class="auto-style4">
                     <asp:LoginName ID="LoginName1" runat="server" />
-&nbsp;&nbsp;&nbsp;
-                    <asp:LoginStatus ID="LoginStatus1" runat="server" />
+&nbsp;<asp:LoginStatus ID="LoginStatus1" runat="server" />
+                    &nbsp;&nbsp;
                 </td>
             </tr>
             <tr>

@@ -64,31 +64,7 @@ namespace ArtStreet.UserControl
             Roles.AddUserToRole(Membership.GetUser((sender as CreateUserWizard).UserName).UserName, "Customer");
             con.Close();
 
-            //obtain cart count
-            con.Open();
-            string queryCartCount = "SELECT COUNT(cartID) FROM tb_Cart";
-            SqlCommand cmdCartCount = new SqlCommand(queryCartCount,con);
-            int countCart = (int)cmdCartCount.ExecuteScalar()+1;
-            con.Close();
-
-            con.Open();
-            string queryCart = "INSERT INTO tb_Cart (cartID, custID) VALUES (@cartID, @cID)";
-            SqlCommand cmdCart = new SqlCommand(queryCart, con);
-            //create new cart id
-            string cartID;
-            if (id < 10)
-            {
-                cartID = "c_00" + countCart;
-                cmdInsert.Parameters.AddWithValue("@cartID", cartID);
-            }
-            else
-            {
-                cartID = "c_0" + countCart;
-                cmdInsert.Parameters.AddWithValue("@cartID", cartID);
-            }
-            cmdCart.Parameters.AddWithValue("@cID", custID);
-            cmdCart.ExecuteNonQuery();
-            con.Close();
+            
         }
     }
 }

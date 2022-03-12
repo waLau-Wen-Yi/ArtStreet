@@ -14,7 +14,7 @@
     <siteMapNode url="" title="User"  description="ArtStreet user page">
       <siteMapNode url="" title="Account Settings"  description="ArtStreet account settings page"/>
       <siteMapNode url="" title="Cart"  description="ArtStreet cart page"/>
-      <siteMapNode url="" title="Payment"  description="ArtStreet payment page"/>
+      <siteMapNode url="CheckoutPage.aspx" title="Payment"  description="ArtStreet payment page"/>
 		<siteMapNode url="ArtistControl/UploadArt.aspx" title="Upload Art"  description="ArtStreet upload art page"/>
       <siteMapNode url="" title="Auction"  description="ArtStreet auction page"/>
     </siteMapNode>
