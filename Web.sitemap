@@ -10,13 +10,14 @@
       <siteMapNode url="" title="Database Control"  description="ArtStreet database control page"/>
       <siteMapNode url="" title="User Control"  description="ArtStreet user control page"/>
       <siteMapNode url="AdminControl/RoleManagementPage.aspx" title="Account Moderation"  description="ArtStreet account moderation page"/>
-    </siteMapNode>
+	</siteMapNode>
     <siteMapNode url="" title="User"  description="ArtStreet user page">
       <siteMapNode url="" title="Account Settings"  description="ArtStreet account settings page"/>
       <siteMapNode url="" title="Cart"  description="ArtStreet cart page"/>
       <siteMapNode url="CheckoutPage.aspx" title="Payment"  description="ArtStreet payment page"/>
 		<siteMapNode url="ArtistControl/UploadArt.aspx" title="Upload Art"  description="ArtStreet upload art page"/>
-      <siteMapNode url="" title="Auction"  description="ArtStreet auction page"/>
+		<siteMapNode url="ArtistControl/ViewOrder.aspx" title="View Order"  description="ArtStreet view order page"/>
+		<siteMapNode url="" title="Auction"  description="ArtStreet auction page"/>
     </siteMapNode>
     <siteMapNode url="AboutUs.aspx" title="About Us"  description="ArtStreet about page" />
   </siteMapNode>
