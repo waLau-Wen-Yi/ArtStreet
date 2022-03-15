@@ -74,13 +74,15 @@
       <DependentUpon>ArtDB.mdf</DependentUpon>
     </Content>
     <Content Include="ArtistControl\UploadArt.aspx" />
-    <Content Include="CheckoutPage.aspx" />
+    <Content Include="UserControl\Cart.aspx" />
+    <Content Include="UserControl\CheckoutPage.aspx" />
     <Content Include="Home\ArtCulture.aspx" />
     <Content Include="Home\Artists.aspx" />
     <Content Include="Home\Artworks.aspx" />
     <Content Include="UserControl\Login.aspx" />
     <Content Include="UserControl\Recovery.aspx" />
     <Content Include="UserControl\Register.aspx" />
+    <Content Include="UserControl\StyleSheet1.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -112,11 +114,18 @@
     <Compile Include="ArtStreet.Master.designer.cs">
       <DependentUpon>ArtStreet.Master</DependentUpon>
     </Compile>
-    <Compile Include="CheckoutPage.aspx.cs">
+    <Compile Include="UserControl\Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\CheckoutPage.aspx.cs">
       <DependentUpon>CheckoutPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CheckoutPage.aspx.designer.cs">
+    <Compile Include="UserControl\CheckoutPage.aspx.designer.cs">
       <DependentUpon>CheckoutPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home\ArtCulture.aspx.cs">

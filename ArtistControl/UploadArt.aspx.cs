@@ -94,19 +94,19 @@ namespace ArtStreet.ArtistControl
 
             string artID = "";
             //Insert these details into the art table//
-            for (int i=0; i<qtyArt; i++)
+            if ((count) >= 10)
             {
+                artID = "a_0" + (count);
+            }
+            else
+            {
+                artID = "a_00" + (count);
+            }
+            
                 con.Open();
-                string queryUpdate = "INSERT INTO tb_Art(artID, artName, artCreateTime , artType, artGenre, artCollection, artURL, artistID, artPrice) VALUES (@artID, @artName, SYSDATETIME(), @artType, @artGenre, @artCollection, @artURL, @artistID, @artPrice)";
+                string queryUpdate = "INSERT INTO tb_Art(artID, artName, artCreateTime , artType, artGenre, artCollection, artURL, artistID, artPrice, artStock) VALUES (@artID, @artName, SYSDATETIME(), @artType, @artGenre, @artCollection, @artURL, @artistID, @artPrice, @artStock)";
                 cmdRetrieve = new SqlCommand(queryUpdate, con);
-                if ((count+i) >= 10)
-                {
-                    artID = "a_0" + (count+i);
-                }
-                else
-                {
-                    artID = "a_00" + (count+i);
-                }
+                
                 cmdRetrieve.Parameters.AddWithValue("@artID", artID);
                 cmdRetrieve.Parameters.AddWithValue("@artName", artName);
                 cmdRetrieve.Parameters.AddWithValue("@artType", type);
@@ -115,9 +115,10 @@ namespace ArtStreet.ArtistControl
                 cmdRetrieve.Parameters.AddWithValue("@artURL", artUrl);
                 cmdRetrieve.Parameters.AddWithValue("@artistID", artistID);
                 cmdRetrieve.Parameters.AddWithValue("@artPrice", price);
+                cmdRetrieve.Parameters.AddWithValue("@artStock", Convert.ToInt32(txtQty.Text));
                 cmdRetrieve.ExecuteNonQuery();
                 con.Close();
-            }
+            
             
             
             Response.Write("<script>alert('Artwork Submitted Sucessfully!')</script>");
